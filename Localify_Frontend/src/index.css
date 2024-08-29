@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    overflow-x: hidden;
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+.homeimage{
+    background-image: url("../public/ecommerce-website-requirements-cover.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.home-second-div-imag1{
+    background-image:url("../public/_0a82f110-bccc-45fa-86b2-2c02cbd49a2d.jpeg");
+    background-size: cover;
+}
+
+.home-fifth-div-image{
+    background-image:url("../public/_0a82f110-bccc-45fa-86b2-2c02cbd49a2d.jpeg");
+    background-size: cover;
+}
