@@ -57,7 +57,14 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    <div className=" relative min-h-screen flex items-center justify-center bg-gray-100">
+      <p 
+        className="absolute top-3 text-black/80 text-[40px] rounded-md m-7 flex justify-center items-center cursor-pointer"
+        onClick={()=>navigate('/')}
+        >
+      Localify
+      </p>
+
       <ToastContainer 
         autoClose={3000}
         hideProgressBar={false}

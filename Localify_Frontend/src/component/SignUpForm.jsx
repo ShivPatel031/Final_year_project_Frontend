@@ -47,7 +47,14 @@ const SignupForm = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 w-full">
+    <div className="relative min-h-screen flex items-center justify-center bg-gray-100 w-full">
+      <p 
+        className="absolute top-0 text-black/80 text-[40px] rounded-md m-5 flex justify-center items-center cursor-pointer"
+        onClick={()=>navigate('/')}
+        >
+      Localify
+      </p>
+
       <ToastContainer />
       <div className="bg-white mt-15 p-10 rounded-lg shadow-lg w-[700px]">
         <div className="flex justify-center mb-3">
