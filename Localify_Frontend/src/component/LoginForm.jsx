@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';  // Import react-toastify CSS
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import { Navigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { makeOnline } from "../StaticData/userData";
+import { makeOnline, storeUserData } from "../StaticData/userData";
 // import { encrypt } from "../../utils/hashing";  // Correct import
 
 
@@ -31,31 +31,41 @@ const LoginForm = ({setAddShop}) => {
   }
 
   const handleSubmit = async (e) => {
+
     e.preventDefault();
-    // try {
-    //   const response = await axios.post("http://localhost:3000/api/users/login", formData);
+    try {
+      const response = await axios.post("http://192.168.82.203:3000/api/users/login", formData);
+      console.log(response.data)
+      const {auth_token,user_token} = response.data;
+      const {role,id} = response.data.user;
 
-    //   const { token, user } = response.data;
-    //   const { username, role, id } = user;
+      Cookies.set('auth_token', auth_token,{ expires: 5});
+      Cookies.set('user_token', user_token,{ expires: 5});
+      dispatch(storeUserData(response.data.user));
 
-    //   Cookies.set('token', token, { expires: 10 });
-    //   Cookies.set('username', username,{ expires: 10 });
-    //   Cookies.set('role', role,{ expires: 10 });
-    //   Cookies.set('id', id),{ expires: 10 };
+      if(role=="shopkeeper"){
+         var shop_id=await axios.get("http://192.168.82.203:3000/api/shops/getId/"+id)
+      }
 
-    //   toast.success(response.data.message || 'Login successful');
+      toast.success(response.data.message || 'Login successful');
       
-    //   setTimeout(() => {
-    //     window.location.reload();
-    //   }, 1000);
+      setTimeout(() => {
+        if(role=="customer"){
+          navigate("/")
+        }else{
+          Cookies.set('Shopid',shop_id.data.shopId,{ expires: 5})
+          navigate("/shop/landingPage/"+shop_id.data.shopId)
+        }
+        
+      }, 1000);
 
-    // } catch (error) {
-    //   toast.error(error.response?.data?.message || 'Login failed');
-    // }
+    } catch (error) {
+      toast.error(error.response?.data?.message || 'Login failed'+error);
+    }
     dispatch(makeOnline());
-    setAddShop(true);
-    navigate('/');
+    // setAddShop(true);
   };
+
 
   return (
     <div className=" relative min-h-screen flex items-center justify-center bg-gray-100">

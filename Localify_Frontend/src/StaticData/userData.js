@@ -12,16 +12,19 @@ const userInfo = createSlice({
         makeOnline:(state)=>
         {
             state.status=true;
-            // state.userInfo=action.payload;
         },
         makeOffline:(state)=>
         {
             state.status=false;
+        },
+        storeUserData:(state,action)=>
+        {
+            state.userInfo=action.payload;
         }
     }
 }
 )
 
-export const {makeOnline,makeOffline} = userInfo.actions
+export const {makeOnline,makeOffline,storeUserData} = userInfo.actions
 
 export default userInfo.reducer

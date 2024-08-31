@@ -17,7 +17,8 @@ function NavOption()
 function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user.status);
+  const status = useSelector((state) => state.user.status);
+  const userData = useSelector(state=>state.user.userInfo);
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -29,7 +30,7 @@ function Header() {
 
         <div className="h-full flex items-center relative overflow-visible">
 
-          {!user && (
+          {!status && (
             <button
               className="w-[70px] text-purple-500 bg-slate-300 rounded-xl h-[40px] mr-2"
               onClick={() => navigate("/login")}
@@ -38,7 +39,7 @@ function Header() {
             </button>
           )}
 
-          {!user && (
+          {!status && (
             <button
               className="w-[75px] text-purple-500 bg-slate-300 rounded-xl h-[40px] ml-2"
               onClick={() => navigate("/signup")}
@@ -47,7 +48,7 @@ function Header() {
             </button>
           )}
 
-          {user && (
+          {status && (
             <FaRegUserCircle
               onClick={() => setIsOpen((prev) => !prev)}
               className="text-[30px] text-slate-600 cursor-pointer"
@@ -56,8 +57,8 @@ function Header() {
 
           {isOpen && (
             <ul className="absolute z-20 w-[150px] bg-black text-white flex flex-col rounded-xl justify-evenly items-start top-[59px] right-[-30px] p-3 gap-2">
-              <li className="hover:border-b-2 border-white w-full p-1 cursor-pointer">Profile</li>
-              <li className="hover:border-b-2 border-white w-full p-1 cursor-pointer"> Add Shop</li>
+              <li className="hover:border-b-2 border-white w-full p-1 cursor-pointer">{userData.firstName}</li>
+              {userData.role=="shopkeeper" && <li className="hover:border-b-2 border-white w-full p-1 cursor-pointer"> Add Shop</li>}
               <li 
                 className="hover:border-b-2 border-white w-full p-1 cursor-pointer"
                 onClick={()=>{dispatch(makeOffline());navigate('/');setIsOpen((prev) => !prev);}}>Logout</li>

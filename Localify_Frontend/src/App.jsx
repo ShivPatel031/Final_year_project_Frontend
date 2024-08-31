@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { Footer } from "./component/Footer";
 import { Header } from "./component/Header";
 import { Outlet, Routes,Route ,useLocation} from "react-router-dom";
@@ -16,7 +17,11 @@ import Dashbord from "./pages/Dashbord.jsx";
 function App() {
 
   const location = useLocation();
+  const userData = useSelector(state=>state.user.userInfo);
   const [addShop,setAddShop] = useState(false);
+
+
+  console.log(userData);
 
   return (
     <>

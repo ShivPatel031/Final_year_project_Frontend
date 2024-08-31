@@ -39,7 +39,7 @@ const SignupForm = () => {
     }
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/users/register",formData);
+        "http://192.168.82.203:3000/api/users/register",formData);
       toast.success(response.data.message || "Registration successful");
     } catch (error) {
       toast.error(error.response?.data?.message || "Registration failed");
