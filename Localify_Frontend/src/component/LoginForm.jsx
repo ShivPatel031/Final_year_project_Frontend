@@ -13,7 +13,7 @@ import { makeOnline } from "../StaticData/userData";
 
 
 
-const LoginForm = () => {
+const LoginForm = ({setAddShop}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({email:"",password:""});
@@ -53,6 +53,7 @@ const LoginForm = () => {
     //   toast.error(error.response?.data?.message || 'Login failed');
     // }
     dispatch(makeOnline());
+    setAddShop(true);
     navigate('/');
   };
 

@@ -1,8 +1,8 @@
 import LoginForm from "../component/LoginForm";
 
-function Login()
+function Login({setAddShop})
 {
-    return <LoginForm />;
+    return <LoginForm setAddShop={setAddShop} />;
 }
 
 export default Login;

@@ -54,7 +54,7 @@ const SignupForm = () => {
         >
       Localify
       </p>
-
+      
       <ToastContainer />
       <div className="bg-white mt-15 p-10 rounded-lg shadow-lg w-[700px]">
         <div className="flex justify-center mb-3">

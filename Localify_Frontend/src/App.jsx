@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { Footer } from "./component/Footer";
 import { Header } from "./component/Header";
 import { Outlet, Routes,Route ,useLocation} from "react-router-dom";
+import AskToRegisterAsShopkeeper from "./component/AskToRegisterAsShopkeeper.jsx";
 import Home_Page from './pages/Home_Page.jsx'
 import About from './pages/About.jsx'
 import Contact from './pages/Contact.jsx'
@@ -14,6 +16,7 @@ import Dashbord from "./pages/Dashbord.jsx";
 function App() {
 
   const location = useLocation();
+  const [addShop,setAddShop] = useState(false);
 
   return (
     <>
@@ -23,10 +26,12 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/shops" element={<Shops />} /> 
-          <Route path="/login" element={<Login />} />  
+          <Route path="/login" element={<Login setAddShop={setAddShop} />} />  
           <Route path="/signup" element={<Signup />} />
        </Routes>
        {location.pathname !== "/login" && location.pathname !== "/signup" && location.pathname.substring(0,7) !== "/shops/" &&  <Footer />}
+       
+       {addShop && <AskToRegisterAsShopkeeper setAddShop={setAddShop} />}
 
        <Routes>
         <Route path='/shops/shop1' element={<ShopPage />}/>

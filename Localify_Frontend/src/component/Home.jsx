@@ -9,7 +9,7 @@ function Home(){
         <div className="w-full relative flex flex-col items-center">
 
             <div 
-                className="mt-[100px] w-[75%] h-[650px] homeimage flex justify-center items-center flex-col rounded-3xl"
+                className="w-screen h-[450px] homeimage flex justify-center items-center flex-col "
                 >
                 <motion.div 
                     className="flex flex-col justify-between items-center h-[350px]"
@@ -18,19 +18,24 @@ function Home(){
                     animate="animation"
                     >
                     <motion.h1 
-                        className="text-[55px] w-[700px] text-center font-bold mainimageanimaion"
+                        className="text-[55px] w-[700px] text-center font-bold mainimageanimaion text-white"
                         >Empowering Local business with efferless Online Stores</motion.h1>
                     <motion.p 
-                        className="text-slate-600 mainimageanimaion"
+                        className="text-slate-600 mainimageanimaion text-white/80"
                         >Where you can ,</motion.p>
                         <div className="w-[70%] flex justify-evenly">
-                            <button className="bg-black text-white rounded-xl w-[100px] h-[40px] text-center mainimageanimaion">Showcase</button>
-                            <button className="bg-black text-white rounded-xl w-[100px] h-[40px] text-center mainimageanimaion">Sell</button>
-                            <button className="bg-black text-white rounded-xl w-[100px] h-[40px] text-center mainimageanimaion">Purchase</button>
+                            <button className="bg-white text-purple-500 rounded-xl w-[100px] h-[40px] text-center mainimageanimaion">Showcase</button>
+                            <button className="bg-white text-purple-500 rounded-xl w-[100px] h-[40px] text-center mainimageanimaion">Sell</button>
+                            <button className="bg-white text-purple-500 rounded-xl w-[100px] h-[40px] text-center mainimageanimaion">Purchase</button>
                         </div>
                     
                 </motion.div>
                 
+            </div>
+
+            <div className="w-full mt-10">
+            <h3 className="text-[40px] text-center">Featured Products</h3>
+
             </div>
 
             <div className="py-[40px] home-second">

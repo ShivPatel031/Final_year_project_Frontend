@@ -8,7 +8,7 @@ import {HomePageNav} from "../StaticData/navbar.js";
 function NavOption()
 {
   return (
-    <ul className="flex w-[60%] justify-between items-center">
+    <ul className="flex w-[45%] justify-between items-center">
       {HomePageNav.map(navData=><li key={navData.id}><NavLink to={navData.to}><p>{navData.title}</p></NavLink></li>)}
     </ul>
   )
@@ -21,9 +21,9 @@ function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="relative z-10 left-[12.5%] top-[10px] w-[75%] h-[60px] bg-slate-400 flex items-center justify-between px-[50px] rounded-3xl overflow-visible">
+    <nav className="relative z-10 w-screen h-[60px] bg-white flex items-center justify-between px-[50px] overflow-visible">
       <div className="w-[15%]">Logo</div>
-      <div className="w-[70%] h-[95%] flex justify-between overflow-visible">
+      <div className="w-[60%] h-[95%] flex justify-between overflow-visible">
 
           <NavOption />
 
@@ -31,7 +31,7 @@ function Header() {
 
           {!user && (
             <button
-              className="w-[70px] text-white bg-slate-800 rounded-xl h-[40px] mr-2"
+              className="w-[70px] text-purple-500 bg-slate-300 rounded-xl h-[40px] mr-2"
               onClick={() => navigate("/login")}
             >
               Log in
@@ -40,7 +40,7 @@ function Header() {
 
           {!user && (
             <button
-              className="w-[75px] text-white bg-slate-800 rounded-xl h-[40px] ml-2"
+              className="w-[75px] text-purple-500 bg-slate-300 rounded-xl h-[40px] ml-2"
               onClick={() => navigate("/signup")}
             >
               Sign up

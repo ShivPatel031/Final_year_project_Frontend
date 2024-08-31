@@ -10,9 +10,9 @@
 }
 
 .homeimage{
-    background-image: url("../public/ecommerce-website-requirements-cover.png");
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-image:linear-gradient(to right , #FF6B81,#AB47BC);
+    /* background-repeat: no-repeat;
+    background-size: cover; */
 }
 
 .home-second-div-imag1{
