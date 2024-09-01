@@ -21,24 +21,31 @@ function ShopDetails() {
 
 function ShopPage() {
   const [shopData, setShopData] = useState({});
+  console.log(shopData)
   const shopId = Cookies.get("Shopid");
+  const auth_token = Cookies.get("auth_token");
+  const user_token = Cookies.get("user_token");
+  const data2={auth_token:auth_token,user_token:user_token}
 
   const fetchShopData = async () => {
     try {
-      const response = await fetch(
-        `http://192.168.82.203:3000/api/shops/${shopId}`,
-        {
-          credentials: "include",
-        }
-      );
+      const response = await axios(
+        `http://${import.meta.env.VITE_BACKEND_ROUTE}:3000/api/shops/${shopId}`,{
+          headers: {
+              'Content-Type': 'application/json', // Indicating JSON data
+              'auth_token': auth_token, // Example of an authorization token
+              'user_token': user_token // Any other custom header
+          },});
 
-      if (!response.ok) {
-        throw new Error(`Error: ${response.status} ${response.statusText}`);
-      }
+      console.log(response);
 
-      const data = await response.json();
-      console.log(data);
-      setShopData(data);
+      // if (!response.ok) {
+      //   throw new Error(`Error: ${response.status} ${response.statusText}`);
+      // }
+
+      // const data = await response.json();
+      // console.log(data);
+      setShopData(response);
     } catch (error) {
       toast.error(error.message || "Data Fetch Failed");
     }

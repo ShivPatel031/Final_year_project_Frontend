@@ -13,6 +13,7 @@ import Signup from './pages/Signup.jsx'
 import ShopPage from "./pages/ShopPage.jsx";
 import AddShop from "./component/AddShop.jsx";
 import Dashbord from "./pages/Dashbord.jsx";
+import CartPage from "./pages/CartPage.jsx";
 
 function App() {
 
@@ -41,6 +42,8 @@ function App() {
        <Routes>
         <Route path='/shops/shop1' element={<ShopPage />}/>
        </Routes> 
+
+       {/* <CartPage /> */}
 
        {/* <Dashbord /> */}
     </>

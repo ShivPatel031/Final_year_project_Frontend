@@ -34,7 +34,7 @@ const LoginForm = ({setAddShop}) => {
 
     e.preventDefault();
     try {
-      const response = await axios.post("http://192.168.82.203:3000/api/users/login", formData);
+      const response = await axios.post(`http://${import.meta.env.VITE_BACKEND_ROUTE}:3000/api/users/login`, formData);
       console.log(response.data)
       const {auth_token,user_token} = response.data;
       const {role,id} = response.data.user;
@@ -44,7 +44,7 @@ const LoginForm = ({setAddShop}) => {
       dispatch(storeUserData(response.data.user));
 
       if(role=="shopkeeper"){
-         var shop_id=await axios.get("http://192.168.82.203:3000/api/shops/getId/"+id)
+         var shop_id=await axios.get(`http://${import.meta.env.VITE_BACKEND_ROUTE}:3000/api/shops/getId/`+id)
       }
 
       toast.success(response.data.message || 'Login successful');
