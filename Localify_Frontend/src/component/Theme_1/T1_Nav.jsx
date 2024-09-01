@@ -1,4 +1,5 @@
 import { FiSearch } from "react-icons/fi";
+import { NavLink } from "react-router-dom";
 
 function ShopNav()
 {
@@ -7,10 +8,10 @@ function ShopNav()
             <div>logo</div>
             <div>
                 <ul className="w-[300px] flex justify-between">
-                    <li>Home</li>
-                    <li>product</li>
-                    <li>contact</li>
-                    <li>about</li>
+                    <li><NavLink to="/shops/shop1/">Home</NavLink></li>
+                    <li><NavLink to="/shops/shop1/product">product</NavLink></li>
+                    <li><NavLink to="/shops/shop1/contact">contact</NavLink></li>
+                    <li><NavLink to="/shops/shop1/about">about</NavLink></li>
                 </ul>
             </div>
             <div className="w-[300px] flex justify-between">

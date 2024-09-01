@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Footer } from "./component/Footer";
 import { Header } from "./component/Header";
-import { Outlet, Routes,Route ,useLocation} from "react-router-dom";
+import { Outlet, Routes,Route ,useLocation, BrowserRouter} from "react-router-dom";
 import AskToRegisterAsShopkeeper from "./component/AskToRegisterAsShopkeeper.jsx";
 import Home_Page from './pages/Home_Page.jsx'
 import About from './pages/About.jsx'
@@ -18,6 +18,7 @@ import CartPage from "./pages/CartPage.jsx";
 function App() {
 
   const location = useLocation();
+  // console.log(location);
   const userData = useSelector(state=>state.user.userInfo);
   const [addShop,setAddShop] = useState(false);
 
@@ -40,7 +41,8 @@ function App() {
        {addShop && <AskToRegisterAsShopkeeper setAddShop={setAddShop} />}
 
        <Routes>
-        <Route path='/shops/shop1' element={<ShopPage />}/>
+        <Route path='/shops/shop1/*' element={<ShopPage />}/>
+
        </Routes> 
 
        {/* <CartPage /> */}
