@@ -47,171 +47,210 @@ const SignupForm = () => {
   };
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center bg-gray-100 w-full">
-      <p 
-        className="absolute top-0 text-black/80 text-[40px] rounded-md m-5 flex justify-center items-center cursor-pointer"
-        onClick={()=>navigate('/')}
-        >
-      Localify
+    <div className="min-h-screen blueGradient flex items-center flex-col justify-center bg-gray-100 w-full">
+      <p
+        className="top-0 fancyFont overflow-hidden p-4 text-white text-[40px] rounded-md m-5 flex justify-center items-center cursor-pointer"
+        onClick={() => navigate("/")}
+      >
+        Localify
       </p>
-      
+
       <ToastContainer />
       <div className="bg-white mt-15 p-10 rounded-lg shadow-lg w-[700px]">
-        <div className="flex justify-center mb-3">
-          {/* <img src={logo} alt="Logo" className="h-16 bg-black" /> */}
-        </div>
         <h2 className="text-2xl font-bold text-center mb-6">
-          Register in  Localify
+          Register in Localify
         </h2>
         <form onSubmit={handleSubmit}>
-          <div className="flex justify-evenly">
-          <div>
-          <div className="mb-4">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="username"
-            >
-              Username
-            </label>
-            <input
-              required
-              name="username"
-              type="text"
-              id="username"
-              value={formData.username}
-              onChange={changeHandler}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              placeholder="Enter your username"
-            />
-          </div>
-          <div className="mb-4">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="email"
-            >
-              Email
-            </label>
-            <input
-              required
-              name="email"
-              type="email"
-              id="email"
-              value={formData.email}
-              onChange={changeHandler}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              placeholder="Enter your email"
-            />
-          </div>
-          <div className=" relative">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="password"
-            >
-              Password
-            </label>
+          <div className="grid grid-cols-2 gap-6">
             <div>
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="firstName"
+              >
+                First Name
+              </label>
               <input
                 required
-                type={showPassword ? "text" : "password"}
-                id="password"
-                name="password"
-                value={formData.password}
+                name="firstName"
+                type="text"
+                id="firstname"
+                value={formData.firstName}
                 onChange={changeHandler}
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                placeholder="Enter your password"
+                placeholder="Enter your firstname"
               />
-              <button
-                type="button"
-                onClick={togglePasswordVisibility}
-                className="text-blue-500 text-sm mx-2 relative top-[-29px] left-[89%]"
-              >
-                {showPassword ? (
-                  <IoMdEyeOff className="text-black text-xl" />
-                ) : (
-                  <IoMdEye className="text-black text-xl" />
-                )}
-              </button>
             </div>
-          </div>
-          <div className="mb-4">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="confirm-password"
-            >
-              Confirm Password
-            </label>
-            <input
-              required
-              name="confirmPassword"
-              type="password"
-              id="confirm-password"
-              value={formData.confirmPassword}
-              onChange={changeHandler}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              placeholder="Confirm your password"
-              onPaste={(e) => e.preventDefault()}
-            />
-          </div>
-          </div>
-
-          <div>
-            <label className="block text-gray-700 text-sm font-bold mb-4">
-                <p>Data of Birth:</p>
-                <input 
-                  type="date"
-                  required
-                  name="dob"
-                  value={formData.dob}
-                  onChange={changeHandler}
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mt-2"
-                  ></input>
+            <div>
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="lastName"
+              >
+                Last Name
               </label>
-              
-              <label className="block text-gray-700 text-sm font-bold mb-5">
-                <p>Contact:</p>
-                <input 
-                  type="text"
-                  required
-                  name="contact"
-                  value={formData.contact}
-                  onChange={changeHandler}
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mt-2"
-                  placeholder="Enter your contact">
+              <input
+                required
+                name="lastName"
+                type="text"
+                id="lastname"
+                value={formData.lastName}
+                onChange={changeHandler}
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                placeholder="Enter your lastname"
+              />
+            </div>
 
-                  </input>
+            <div>
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="email"
+              >
+                Email
               </label>
-              
+              <input
+                required
+                name="email"
+                type="email"
+                id="email"
+                value={formData.email}
+                onChange={changeHandler}
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                placeholder="Enter your email"
+              />
+            </div>
+            <div>
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="contact"
+              >
+                Contact
+              </label>
+              <input
+                type="text"
+                required
+                name="contact"
+                value={formData.contact}
+                onChange={changeHandler}
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                placeholder="Enter your contact"
+              />
+            </div>
+
+            <div className="relative">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="password"
+              >
+                Password
+              </label>
+              <div>
+                <input
+                  required
+                  type={showPassword ? "text" : "password"}
+                  id="password"
+                  name="password"
+                  value={formData.password}
+                  onChange={changeHandler}
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  placeholder="Enter your password"
+                />
+                <button
+                  type="button"
+                  onClick={togglePasswordVisibility}
+                  className="text-blue-500 text-sm mx-2 absolute top-[35px] right-2"
+                >
+                  {showPassword ? (
+                    <IoMdEyeOff className="text-black text-xl" />
+                  ) : (
+                    <IoMdEye className="text-black text-xl" />
+                  )}
+                </button>
+              </div>
+            </div>
+
+            <div>
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="confirm-password"
+              >
+                Confirm Password
+              </label>
+              <input
+                required
+                name="confirmPassword"
+                type="password"
+                id="confirm-password"
+                value={formData.confirmPassword}
+                onChange={changeHandler}
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                placeholder="Confirm your password"
+                onPaste={(e) => e.preventDefault()}
+              />
+            </div>
+
+            <div>
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="dob"
+              >
+                Date of Birth
+              </label>
+              <input
+                type="date"
+                required
+                name="dob"
+                value={formData.dob}
+                onChange={changeHandler}
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              />
+            </div>
+
+           
+
+            <div>
               <label
                 className="block text-gray-700 text-sm font-bold mb-2"
                 htmlFor="gender"
               >
-                Gender:
-                <div className="w-[160px] flex justify-between mt-2">
-                  <div
-                    onClick={()=>setFormData(prev=>{return {...prev,gender:"male"}})}
-                    className={`font-bold ${formData.gender=="male" ?"bg-black text-white":"text-black bg-white"} py-2 px-4 rounded-full focus:outline-none focus:shadow-outline border-2 border-gray-400 cursor-pointer`}>
-                      Male
-                  </div>
-                  <div
-                    onClick={()=>setFormData(prev=>{return {...prev,gender:"female"}})}
-                    className={`font-bold ${formData.gender=="female" ?"bg-black text-white":"text-black bg-white"} py-2 px-4 rounded-full focus:outline-none focus:shadow-outline border-2 border-gray-400 cursor-pointer`}>
-                    Female
-                  </div>
-                </div>
+                Gender
               </label>
+              <div className="flex space-x-6">
+                <div
+                  onClick={() =>
+                    setFormData((prev) => ({ ...prev, gender: "male" }))
+                  }
+                  className={`font-bold ${
+                    formData.gender === "male"
+                      ? "bg-slate-800 text-white"
+                      : "text-slate-800 bg-white"
+                  } py-2 px-4   text-white   rounded-lg focus:outline-none focus:shadow-outline border-2 border-gray-400 cursor-pointer`}
+                >
+                  Male
+                </div>
+                <div
+                  onClick={() =>
+                    setFormData((prev) => ({ ...prev, gender: "female" }))
+                  }
+                  className={`font-bold ${
+                    formData.gender === "female"
+                    ? "bg-slate-800 text-white"
+                    : "text-slate-800 bg-white"
+                  } py-2 px-4 rounded-lg   focus:outline-none focus:shadow-outline border-2 border-gray-400 cursor-pointer`}
+                >
+                  Female
+                </div>
+              </div>
+            </div>
           </div>
-          </div>
-          
 
-          <div className="flex items-center justify-around">
+          <div className="flex items-center justify-between mt-6">
             <button
               type="submit"
-              className="bg-black text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline border-2 border-gray-400"
+              className="bg-slate-800 text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline border-[3px] border-gray-500"
             >
               Sign Up
             </button>
             <a
-              onClick={()=>navigate('/login')}
+              onClick={() => navigate("/login")}
               className="text-slate-600/80 inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800 cursor-pointer"
             >
               Already registered? Sign in

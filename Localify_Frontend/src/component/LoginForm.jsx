@@ -68,15 +68,16 @@ const LoginForm = ({setAddShop}) => {
 
 
   return (
-    <div className=" relative min-h-screen flex items-center justify-center bg-gray-100">
-      <p 
-        className="absolute top-3 text-black/80 text-[40px] rounded-md m-7 flex justify-center items-center cursor-pointer"
-        onClick={()=>navigate('/')}
-        >
-      Localify
+    <div className=" flex-col  min-h-screen flex items-center justify-start blueGradient">
+        
+      <p
+        className=" overflow-hidden p-4  fancyFont top-3 text-white text-[40px] rounded-md m-7 flex justify-center items-center cursor-pointer"
+        onClick={() => navigate("/")}
+      >
+        Localify
       </p>
 
-      <ToastContainer 
+      <ToastContainer
         autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
@@ -85,55 +86,52 @@ const LoginForm = ({setAddShop}) => {
         pauseOnFocusLoss
         draggable
         pauseOnHover={false}
-        theme="dark"
       />
-      <div className="bg-white p-10 rounded-lg shadow-lg w-full max-w-md">
 
-        <div className="flex justify-center mb-6">
+      <div className="bg-white p-10  rounded-lg shadow-lg w-full max-w-md">
+        <div className="flex justify-start mb-6">
           {/* <img src={logo} alt="Logo" className="h-16 bg-black" /> */}
         </div>
 
-        <h2 className="text-2xl font-bold text-center mb-2">
-          Login 
-        </h2>
+        <h2 className="text-3xl font-bold text-center mb-4 h-10">Login</h2>
 
         <p className="text-slate-600 text-center mb-4">Connect to Localify</p>
 
         <form onSubmit={handleSubmit}>
-
           <div className="mb-4">
-
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="email">
+              htmlFor="email"
+            >
               Email
             </label>
 
             <input
               type="email"
               id="email"
+              required
               name="email"
               value={formData.email}
               onChange={changeHandler}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               placeholder="Enter your email"
             />
-
           </div>
 
           <div className="mb-4 relative">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="password">
+              htmlFor="password"
+            >
               Password
             </label>
 
             <div>
-
               <input
                 type={showPassword ? "text" : "password"}
                 id="password"
                 name="password"
+                required
                 value={formData.password}
                 onChange={changeHandler}
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -142,17 +140,19 @@ const LoginForm = ({setAddShop}) => {
 
               <button
                 type="button"
-                onClick={()=>setShowPassword(prev=>!prev)}
+                onClick={() => setShowPassword((prev) => !prev)}
                 className="text-blue-500 text-sm mx-2 relative top-[-29px] left-[89%]"
               >
-                {showPassword ? <IoMdEyeOff className="text-black text-xl" /> : <IoMdEye className="text-black text-xl" />}
+                {showPassword ? (
+                  <IoMdEyeOff className="text-black text-xl" />
+                ) : (
+                  <IoMdEye className="text-black text-xl" />
+                )}
               </button>
-
             </div>
           </div>
 
           <div className="w-full h-[50px] flex items-center justify-around">
-
             <button
               type="submit"
               className="bg-black/80 text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline shadow-lg hover:scale-105"
@@ -160,18 +160,17 @@ const LoginForm = ({setAddShop}) => {
               Sign In
             </button>
             <a
-              onClick={()=>navigate('/signup')}
+              onClick={() => navigate("/signup")}
               className="text-slate-600/80 inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800 cursor-pointer"
             >
               Not registered? Sign up
             </a>
           </div>
-
         </form>
-
       </div>
     </div>
   );
 };
 
 export default LoginForm;
+

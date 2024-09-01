@@ -65,7 +65,7 @@ function ShopPage() {
         pauseOnHover={false}
         theme="dark"
       />
-      <T1_Nav />
+      <T1_Nav shopLogo={shopData.logo}/>
       <Routes>
         <Route path='' element={<T1_Home shopData={shopData}/>}/>
         <Route path="about" element={<T1_About />} />

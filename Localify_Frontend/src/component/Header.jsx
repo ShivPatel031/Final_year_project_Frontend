@@ -23,7 +23,9 @@ function Header() {
 
   return (
     <nav className="relative z-10 w-screen h-[60px] bg-white flex items-center justify-between px-[50px] overflow-visible">
-      <div className="w-[15%]">Logo</div>
+      <div className="w-[15%]">
+        <img src={`https://res.cloudinary.com/dtdixmfnd/image/upload/v1725194744/logo_x3cqrq.png`} alt="logo" />
+      </div>
       <div className="w-[60%] h-[95%] flex justify-between overflow-visible">
 
           <NavOption />

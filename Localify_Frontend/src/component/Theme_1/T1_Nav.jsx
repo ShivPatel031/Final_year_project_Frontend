@@ -1,11 +1,16 @@
 import { FiSearch } from "react-icons/fi";
 import { NavLink } from "react-router-dom";
 
-function ShopNav()
+function ShopNav({shopLogo})
 {
     return (
         <div className="w-full h-[70px] bg-slate-300 flex justify-around items-center">
-            <div>logo</div>
+            <div>
+                <img 
+                    src={shopLogo} 
+                    alt="shop logo"
+                    className="w-[40px] h-[40px]"/>
+            </div>
             <div>
                 <ul className="w-[300px] flex justify-between">
                     <li><NavLink to="/shops/shop1/">Home</NavLink></li>
