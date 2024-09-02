@@ -1,6 +1,6 @@
 import { SiFacebook, SiInstagram, SiSnapchat } from "react-icons/si";
 
-function Footer() {
+function T1_Footer() {
   return (
     <footer className="w-full bg-gray-900 text-white py-8 px-6 lg:px-32">
       <div className="flex justify-between items-center">
@@ -54,4 +54,4 @@ function Footer() {
   );
 }
 
-export { Footer };
+export { T1_Footer };

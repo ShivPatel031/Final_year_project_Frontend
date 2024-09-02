@@ -42,7 +42,8 @@ const LoginForm = ({setAddShop}) => {
       Cookies.set('auth_token', auth_token,{ expires: 5});
       Cookies.set('user_token', user_token,{ expires: 5});
       dispatch(storeUserData(response.data.user));
-
+      localStorage.setItem("userData",JSON.stringify(response.data.user))
+      
       if(role=="shopkeeper"){
          var shop_id=await axios.get(`http://${import.meta.env.VITE_BACKEND_ROUTE}:3000/api/shops/getId/`+id)
       }
@@ -54,7 +55,7 @@ const LoginForm = ({setAddShop}) => {
           navigate("/")
         }else{
           Cookies.set('Shopid',shop_id.data.shopId,{ expires: 5})
-          navigate("/shop/landingPage/"+shop_id.data.shopId)
+          navigate("/shops/"+shop_id.data.shopId)
         }
         
       }, 1000);
@@ -71,7 +72,7 @@ const LoginForm = ({setAddShop}) => {
     <div className=" flex-col  min-h-screen flex items-center justify-start blueGradient">
         
       <p
-        className=" overflow-hidden p-4  fancyFont top-3 text-white text-[40px] rounded-md m-7 flex justify-center items-center cursor-pointer"
+        className=" overflow-hidden p-4 drop-shadow-lg hover:scale-95  fancyFont top-3 text-white text-[40px] rounded-md m-7 flex justify-center items-center cursor-pointer"
         onClick={() => navigate("/")}
       >
         Localify
@@ -155,7 +156,7 @@ const LoginForm = ({setAddShop}) => {
           <div className="w-full h-[50px] flex items-center justify-around">
             <button
               type="submit"
-              className="bg-black/80 text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline shadow-lg hover:scale-105"
+              className="bg-slate-800 text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline border-[3px] border-gray-500"
             >
               Sign In
             </button>

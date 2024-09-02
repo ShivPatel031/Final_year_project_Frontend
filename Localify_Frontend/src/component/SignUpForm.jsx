@@ -39,7 +39,7 @@ const SignupForm = () => {
     }
     try {
       const response = await axios.post(
-        "http://192.168.82.203:3000/api/users/register",formData);
+        `http://${import.meta.env.VITE_BACKEND_ROUTE}:3000/api/users/register`,formData);
       toast.success(response.data.message || "Registration successful");
     } catch (error) {
       toast.error(error.response?.data?.message || "Registration failed");
@@ -49,7 +49,7 @@ const SignupForm = () => {
   return (
     <div className="min-h-screen blueGradient flex items-center flex-col justify-center bg-gray-100 w-full">
       <p
-        className="top-0 fancyFont overflow-hidden p-4 text-white text-[40px] rounded-md m-5 flex justify-center items-center cursor-pointer"
+        className="top-0 fancyFont overflow-hidden p-4 text-white text-[40px] rounded-md m-5 flex justify-center items-center cursor-pointer drop-shadow-lg hover:scale-95"
         onClick={() => navigate("/")}
       >
         Localify
@@ -221,8 +221,8 @@ const SignupForm = () => {
                   className={`font-bold ${
                     formData.gender === "male"
                       ? "bg-slate-800 text-white"
-                      : "text-slate-800 bg-white"
-                  } py-2 px-4   text-white   rounded-lg focus:outline-none focus:shadow-outline border-2 border-gray-400 cursor-pointer`}
+                      : "bg-white  text-slate-800"
+                  } py-2 px-4    rounded-lg focus:outline-none focus:shadow-outline border-2 border-gray-400  border-[3px]  shadow-black/30 cursor-pointer`}
                 >
                   Male
                 </div>
@@ -234,7 +234,7 @@ const SignupForm = () => {
                     formData.gender === "female"
                     ? "bg-slate-800 text-white"
                     : "text-slate-800 bg-white"
-                  } py-2 px-4 rounded-lg   focus:outline-none focus:shadow-outline border-2 border-gray-400 cursor-pointer`}
+                  } py-2 px-4 rounded-lg   focus:outline-none focus:shadow-outline border-2 border-gray-400 border-[3px] shadow-black/30  cursor-pointer`}
                 >
                   Female
                 </div>

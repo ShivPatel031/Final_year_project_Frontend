@@ -41,7 +41,7 @@ function App() {
        {addShop && <AskToRegisterAsShopkeeper setAddShop={setAddShop} />}
 
        <Routes>
-        <Route path='/shops/shop1/*' element={<ShopPage />}/>
+        <Route path='/shops/:shopId' element={<ShopPage />}/>
 
        </Routes> 
 
