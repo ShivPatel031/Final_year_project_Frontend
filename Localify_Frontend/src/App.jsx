@@ -41,13 +41,9 @@ function App() {
        {addShop && <AskToRegisterAsShopkeeper setAddShop={setAddShop} />}
 
        <Routes>
-        <Route path='/shops/:shopId' element={<ShopPage />}/>
+        <Route path='/shops/:shopId/*' element={<ShopPage />}/>
 
        </Routes> 
-
-       {/* <CartPage /> */}
-
-       {/* <Dashbord /> */}
     </>
   );
 }

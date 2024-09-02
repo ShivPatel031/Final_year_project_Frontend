@@ -8,8 +8,6 @@ import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import axios from "axios";
 
-// import { features } from "./staticData";
-
 function ProductCard({ product }) {
   return (
     <div className="w-[300px] bg-white shadow-lg  flex flex-col justify-between items-center rounded-lg overflow-hidden border border-slate-300">
@@ -47,9 +45,8 @@ function FeaturesCard({ data }) {
 }
 
 function T1_Home({ shopData }) {
-  const [featuredProducts,setFeaturedProducts]= useState([]);
 
-  console.log(featuredProducts);
+  const [featuredProducts,setFeaturedProducts]= useState([]);
   const shopID=Cookies.get("Shopid")
   const auth_token=Cookies.get("auth_token")
   const user_token=Cookies.get("user_token")

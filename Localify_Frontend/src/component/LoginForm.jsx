@@ -55,6 +55,7 @@ const LoginForm = ({setAddShop}) => {
           navigate("/")
         }else{
           Cookies.set('Shopid',shop_id.data.shopId,{ expires: 5})
+          // console.log(shop_id.data.shopId);
           navigate("/shops/"+shop_id.data.shopId)
         }
         

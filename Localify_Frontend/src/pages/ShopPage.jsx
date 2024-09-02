@@ -6,25 +6,10 @@ import axios from "axios";
 import T1_Home from "../component/Theme_1/T1_Home";
 import { Routes,Route, BrowserRouter, useParams, Link } from "react-router-dom";
 import T1_About from "../component/Theme_1/T1_About";
-import T1_Contact from "../component/Theme_1/T1_Contack";
+import T1_Contact from "../component/Theme_1/T1_Contact";
 import T1_Product from "../component/Theme_1/T1_Products";
 import { T1_Footer } from "../component/Theme_1/T1_Footer";
 axios.defaults.withCredentials = true;
-
-
-function ProductCard() {
-  return (
-    <div className="w-[300px] h-[250px] bg-slate-300 rounded-md m-4 "></div>
-  );
-}
-
-function FeaturesCard() {
-  return <div className="w-[400px] h-[350px] bg-slate-400 rounded-md"></div>;
-}
-
-function ShopDetails() {
-  return <div></div>;
-}
 
 function ShopPage() {
 
@@ -32,6 +17,7 @@ function ShopPage() {
   const [shopData, setShopData] = useState({});
   console.log(shopData)
   const {shopId} = useParams()
+  console.log("shopid is "+shopId);
   const auth_token = Cookies.get("auth_token");
   const user_token = Cookies.get("user_token");
   
@@ -74,7 +60,7 @@ function ShopPage() {
            show &&
         <div>
 
-      <T1_Nav shopLogo={shopData.logo}/>
+      <T1_Nav shopLogo={shopData.logo} shopId={shopData._id}/>
       <Routes>
         <Route path='' element={<T1_Home shopData={shopData}/>}/>
         <Route path="about" element={<T1_About shopData={shopData}/>} />

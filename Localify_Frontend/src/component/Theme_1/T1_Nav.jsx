@@ -1,7 +1,7 @@
 import { FiSearch } from "react-icons/fi";
 import { NavLink } from "react-router-dom";
 
-function ShopNav({shopLogo})
+function ShopNav({shopLogo,shopId})
 {
     return (
         <div className="w-full h-[70px] bg-slate-300 flex justify-around items-center">
@@ -13,10 +13,10 @@ function ShopNav({shopLogo})
             </div>
             <div>
                 <ul className="w-[300px] flex justify-between">
-                    <li><NavLink to="/shops/shop1/">Home</NavLink></li>
-                    <li><NavLink to="/shops/shop1/product">product</NavLink></li>
-                    <li><NavLink to="/shops/shop1/contact">contact</NavLink></li>
-                    <li><NavLink to="/shops/shop1/about">about</NavLink></li>
+                    <li><NavLink to={`/shops/${shopId}/`}>Home</NavLink></li>
+                    <li><NavLink to={`/shops/${shopId}/product`}>product</NavLink></li>
+                    <li><NavLink to={`/shops/${shopId}/contact`}>contact</NavLink></li>
+                    <li><NavLink to={`/shops/${shopId}/about`}>about</NavLink></li>
                 </ul>
             </div>
             <div className="w-[300px] flex justify-between">

@@ -5,8 +5,10 @@ import Input from '../component/ui/Input';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../component/ui/Card';
 import Badge from '../component/ui/Badge';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Shops() {
+  const navigate = useNavigate();
   const [shops, setShops] = useState([]);
   const [filteredShops, setFilteredShops] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -14,6 +16,7 @@ function Shops() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [sortOption, setSortOption] = useState('name');
+  console.log(filteredShops);
 
   useEffect(() => {
     const fetchShops = async () => {
@@ -61,6 +64,13 @@ function Shops() {
       setFilteredShops(sortedShops);
     }
   }, [sortOption]); // Remove `filteredShops` from the dependencies
+
+  const goToShop=(shoptheme,sid)=>{
+    if(shoptheme=="theme_1")
+    {
+      navigate("/shops/"+sid)
+    }
+  }
 
   return (
     <div className="min-h-screen bg-gray-200 mt-20">
@@ -146,7 +156,7 @@ function Shops() {
                 </div>
               </CardContent>
               <CardFooter>
-                <Button>View Shop</Button>
+                <Button onClick={()=>goToShop(shop.theme,shop._id)}>View Shop</Button>
               </CardFooter>
             </Card>
           ))}
