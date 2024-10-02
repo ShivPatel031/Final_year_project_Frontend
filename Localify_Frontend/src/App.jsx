@@ -35,6 +35,7 @@ function App() {
           <Route path="/shops" element={<Shops />} /> 
           <Route path="/login" element={<Login setAddShop={setAddShop} />} />  
           <Route path="/signup" element={<Signup />} />
+          <Route path="/dashbord" element={<Dashbord />} />
        </Routes>
        {location.pathname !== "/login" && location.pathname !== "/signup" && location.pathname.substring(0,7) !== "/shops/" &&  <Footer />}
        
@@ -42,7 +43,7 @@ function App() {
 
        <Routes>
         <Route path='/shops/:shopId/*' element={<ShopPage />}/>
-
+        <Route path="/shops/addShop" element={<AddShop />} />
        </Routes> 
     </>
   );

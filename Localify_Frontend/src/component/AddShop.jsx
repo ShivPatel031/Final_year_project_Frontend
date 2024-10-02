@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 
 const AddShop = () => {
+  const user = JSON.parse(localStorage.getItem("userData"))
   const [wait, setWait] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -105,6 +106,7 @@ const AddShop = () => {
     data.append("theme", formData.theme);
     data.append("establishedYear", formData.establishedYear);
     data.append("category", formData.category);
+    data.append("userId",user.id);
 
     // Add location fields
     Object.keys(formData.location).forEach((key) => {
@@ -147,8 +149,9 @@ const AddShop = () => {
       setWait(true);
 
       logFormData(data)
+      console.log(data);
       const response = await axios.post(
-        "http://localhost:3000/api/shop/add",
+        "http://localhost:3000/api/shops/add",
         data,
         {
           headers: {

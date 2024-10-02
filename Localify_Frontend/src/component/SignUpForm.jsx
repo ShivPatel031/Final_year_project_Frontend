@@ -32,7 +32,7 @@ const SignupForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (password !== confirmPassword) {
+    if (formData.password !== formData.confirmPassword) {
       setError("Passwords do not match");
       toast.error("Passwords do not match");
       return;
@@ -237,6 +237,41 @@ const SignupForm = () => {
                   } py-2 px-4 rounded-lg   focus:outline-none focus:shadow-outline border-2 border-gray-400 border-[3px] shadow-black/30  cursor-pointer`}
                 >
                   Female
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="gender"
+              >
+                Role
+              </label>
+              <div className="flex space-x-6">
+                <div
+                  onClick={() =>
+                    setFormData((prev) => ({ ...prev, role: "customer" }))
+                  }
+                  className={`font-bold ${
+                    formData.role === "customer"
+                      ? "bg-slate-800 text-white"
+                      : "bg-white  text-slate-800"
+                  } py-2 px-4    rounded-lg focus:outline-none focus:shadow-outline border-2 border-gray-400  border-[3px]  shadow-black/30 cursor-pointer`}
+                >
+                  Customer
+                </div>
+                <div
+                  onClick={() =>
+                    setFormData((prev) => ({ ...prev, role: "shopkeeper" }))
+                  }
+                  className={`font-bold ${
+                    formData.role === "shopkeeper"
+                    ? "bg-slate-800 text-white"
+                    : "text-slate-800 bg-white"
+                  } py-2 px-4 rounded-lg   focus:outline-none focus:shadow-outline border-2 border-gray-400 border-[3px] shadow-black/30  cursor-pointer`}
+                >
+                  Shopkeeper
                 </div>
               </div>
             </div>

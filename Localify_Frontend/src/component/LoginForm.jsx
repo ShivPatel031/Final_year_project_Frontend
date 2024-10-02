@@ -45,24 +45,31 @@ const LoginForm = ({setAddShop}) => {
       localStorage.setItem("userData",JSON.stringify(response.data.user))
       
       if(role=="shopkeeper"){
-         var shop_id=await axios.get(`http://${import.meta.env.VITE_BACKEND_ROUTE}:3000/api/shops/getId/`+id)
-      }
+        try{
+          var shop_id=await axios.get(`http://${import.meta.env.VITE_BACKEND_ROUTE}:3000/api/shops/getId/`+id)
+          console.log(`${shop_id.status()} consoling`);
+        }
+        catch(error){
+          navigate("/")
+        }
+        }
 
       toast.success(response.data.message || 'Login successful');
       
       setTimeout(() => {
-        if(role=="customer"){
-          navigate("/")
-        }else{
+        if(shop_id){
           Cookies.set('Shopid',shop_id.data.shopId,{ expires: 5})
-          // console.log(shop_id.data.shopId);
           navigate("/shops/"+shop_id.data.shopId)
         }
+        else{
+          navigate("/")
+        }
+        
         
       }, 1000);
 
     } catch (error) {
-      toast.error(error.response?.data?.message || 'Login failed'+error);
+      toast.error(error.response?.data?.message || 'Login failed'+ error);
     }
     dispatch(makeOnline());
     // setAddShop(true);

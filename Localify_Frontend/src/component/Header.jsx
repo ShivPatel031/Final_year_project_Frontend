@@ -83,7 +83,9 @@ function Header() {
               Profile
             </li>
             {userData.role === "shopkeeper" && (
-              <li className="hover:bg-white hover:text-slate-950 border-white w-full p-1 cursor-pointer rounded-md">
+              <li 
+                onClick={()=>{navigate("/dashbord");setIsOpen(false);}}
+                className="hover:bg-white hover:text-slate-950 border-white w-full p-1 cursor-pointer rounded-md">
                 Manage Shop
               </li>
             )}

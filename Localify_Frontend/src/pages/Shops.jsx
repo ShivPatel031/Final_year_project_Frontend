@@ -68,6 +68,7 @@ function Shops() {
   const goToShop=(shoptheme,sid)=>{
     if(shoptheme=="theme_1")
     {
+      console.log("shop",sid);
       navigate("/shops/"+sid)
     }
   }

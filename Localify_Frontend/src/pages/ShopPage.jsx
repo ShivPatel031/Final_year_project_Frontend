@@ -17,6 +17,7 @@ function ShopPage() {
   const [shopData, setShopData] = useState({});
   console.log(shopData)
   const {shopId} = useParams()
+  console.log("this is shop page",shopId)
   console.log("shopid is "+shopId);
   const auth_token = Cookies.get("auth_token");
   const user_token = Cookies.get("user_token");
@@ -61,12 +62,12 @@ function ShopPage() {
         <div>
 
       <T1_Nav shopLogo={shopData.logo} shopId={shopData._id}/>
-      <Routes>
-        <Route path='' element={<T1_Home shopData={shopData}/>}/>
-        <Route path="about" element={<T1_About shopData={shopData}/>} />
-        <Route path="contact" element={<T1_Contact />} />
-        <Route path="product" element={<T1_Product />} />
-      </Routes>
+              <Routes>
+                <Route path='' element={<T1_Home shopData={shopData}/>}/>
+                <Route path="about" element={<T1_About shopData={shopData}/>} />
+                <Route path="contact" element={<T1_Contact />} />
+                <Route path="product" element={<T1_Product />} />
+              </Routes>
       <T1_Footer/>
        
       </div>
