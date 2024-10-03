@@ -79,7 +79,7 @@ function Header() {
 
         {status && isOpen && (
           <ul className="absolute z-20 w-[150px] bg-slate-950/90 text-white flex flex-col rounded-xl justify-evenly items-start top-[59px] right-[-30px] p-3 gap-2">
-            <li className="hover:bg-white hover:text-slate-950 border-white w-full p-1 cursor-pointer rounded-md">
+            <li className="hover:bg-white hover:text-slate-950 border-white w-full p-1 cursor-pointer rounded-md" onClick={()=>{navigate(`/profile/${userData.id}`);setIsOpen(false)}}>
               Profile
             </li>
             {userData.role === "shopkeeper" && (

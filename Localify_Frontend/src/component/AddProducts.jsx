@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import {X} from 'lucide-react'
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
-const AddProducts = ({closeIt,shopId}) => {
+const AddProducts = ({shopId,fetchProductData}) => {
+  const navigate = useNavigate();
   console.log(shopId);
   const [product, setProduct] = useState({
     name: '',
@@ -98,7 +100,7 @@ const AddProducts = ({closeIt,shopId}) => {
     try {
       console.log(data);
       const response = await axios.post(
-        "http://localhost:3000/api/products/add",
+        `http://${import.meta.env.VITE_BACKEND_ROUTE}:3000/api/products/add`,
         data,
         {
           headers: {
@@ -107,8 +109,9 @@ const AddProducts = ({closeIt,shopId}) => {
         }
       );
       alert("Product added successfully!");
-      closeIt(false);
+      navigate('/dashbord');
       console.log(response.data);
+      fetchProductData(shopId);
     } catch (error) {
       console.error("Error adding Product:", error);
       alert("Failed to add shop");
@@ -117,7 +120,7 @@ const AddProducts = ({closeIt,shopId}) => {
 
   return (
     <>
-    <X className='absolute top-[40px] left-[100px]' onClick={()=>closeIt(false)}/>
+    <X className='absolute top-[40px] left-[100px]' onClick={()=>navigate('/dashbord')}/>
 
     <h2 className="text-2xl font-bold mb-4 text-center mt-[50px]">Add New Product</h2>
     <form onSubmit={handleSubmit} className="space-y-4 w-screen h-screen mx-auto p-6 flex flex-col items-center gap-10">

@@ -14,13 +14,15 @@ import ShopPage from "./pages/ShopPage.jsx";
 import AddShop from "./component/AddShop.jsx";
 import Dashbord from "./pages/Dashbord.jsx";
 import CartPage from "./pages/CartPage.jsx";
+import Profile from "./pages/Profile.jsx";
 
 function App() {
 
   const location = useLocation();
   // console.log(location);
   const userData = useSelector(state=>state.user.userInfo);
-  const [addShop,setAddShop] = useState(false);
+  // const [addShop,setAddShop] = useState(false);
+  const user={role:"customer"}
 
 
   console.log(userData);
@@ -33,13 +35,14 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/shops" element={<Shops />} /> 
-          <Route path="/login" element={<Login setAddShop={setAddShop} />} />  
+          <Route path="/login" element={<Login />} />  
           <Route path="/signup" element={<Signup />} />
-          <Route path="/dashbord" element={<Dashbord />} />
+          <Route path="/dashbord/*" element={<Dashbord />} />
+          <Route path="/profile/:id" element={<Profile />} />
        </Routes>
        {location.pathname !== "/login" && location.pathname !== "/signup" && location.pathname.substring(0,7) !== "/shops/" &&  <Footer />}
        
-       {addShop && <AskToRegisterAsShopkeeper setAddShop={setAddShop} />}
+       {/* {addShop && <AskToRegisterAsShopkeeper setAddShop={setAddShop} />} */}
 
        <Routes>
         <Route path='/shops/:shopId/*' element={<ShopPage />}/>

@@ -151,7 +151,7 @@ const AddShop = () => {
       logFormData(data)
       console.log(data);
       const response = await axios.post(
-        "http://localhost:3000/api/shops/add",
+        `http://${import.meta.env.VITE_BACKEND_ROUTE}:3000/api/shops/add`,
         data,
         {
           headers: {
