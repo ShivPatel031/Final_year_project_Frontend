@@ -167,7 +167,7 @@ export default function ShopkeeperDashboard() {
         <Routes>
           <Route path="" element={<DashboardHome shop={shop} user={user} products={products} handleDeleteProduct={handleDeleteProduct} />}/>
           <Route path="addShop" element={<div className="fixed w-screen h-full top-0 left-0 bg-white z-20" ><AddProducts shopId={shop._id} fetchProductData={fetchProductData}/></div>}/>
-          <Route path="products" element={<DashbordProduct />}/>
+          <Route path="products" element={<DashbordProduct shopId={shop._id}/>}/>
           <Route path="orders" element={<DashboardOrders />} />
         </Routes>
       </div>
