@@ -39,6 +39,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/dashbord/*" element={<Dashbord />} />
           <Route path="/profile/:id" element={<Profile />} />
+          <Route path="/cart" element={<CartPage />}/>
        </Routes>
        {location.pathname !== "/login" && location.pathname !== "/signup" && location.pathname.substring(0,7) !== "/shops/" &&  <Footer />}
        
@@ -47,7 +48,7 @@ function App() {
        <Routes>
         <Route path='/shops/:shopId/*' element={<ShopPage />}/>
         <Route path="/shops/addShop" element={<AddShop />} />
-       </Routes> 
+       </Routes>
     </>
   );
 }

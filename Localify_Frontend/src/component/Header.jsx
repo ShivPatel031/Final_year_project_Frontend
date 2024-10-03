@@ -82,13 +82,19 @@ function Header() {
             <li className="hover:bg-white hover:text-slate-950 border-white w-full p-1 cursor-pointer rounded-md" onClick={()=>{navigate(`/profile/${userData.id}`);setIsOpen(false)}}>
               Profile
             </li>
-            {userData.role === "shopkeeper" && (
+            {userData.role === "shopkeeper" ? (
               <li 
                 onClick={()=>{navigate("/dashbord");setIsOpen(false);}}
                 className="hover:bg-white hover:text-slate-950 border-white w-full p-1 cursor-pointer rounded-md">
                 Manage Shop
               </li>
-            )}
+            ) : 
+            (<li
+              onClick={()=>{navigate("/cart");setIsOpen(false);}}
+              className="hover:bg-white hover:text-slate-950 border-white w-full p-1 cursor-pointer rounded-md">
+              Cart
+            </li>)
+            }
             <li
               className="hover:bg-red-400 hover:text-slate-100 border-white w-full p-1 cursor-pointer rounded-md"
               onClick={() => {
