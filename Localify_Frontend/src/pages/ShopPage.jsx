@@ -11,6 +11,7 @@ import T1_Product from "../component/Theme_1/T1_Products";
 import { T1_Footer } from "../component/Theme_1/T1_Footer";
 import T1_ProductPage from "../component/Theme_1/T1_ProductPage";
 import T2_Home from "../component/Theme_2/T2_Home";
+import T2_Nav from "../component/Theme_2/T2_Nav";
 axios.defaults.withCredentials = true;
 
 function ShopPage() {
@@ -77,7 +78,7 @@ function ShopPage() {
         <T1_Footer/>
       </>):
       (<>
-        <T1_Nav shopLogo={shopData.logo} shopId={shopData._id}/>
+        <T2_Nav shopLogo={shopData.logo} shopId={shopData._id}/>
               <Routes>
                 <Route path='home' element={<T2_Home shopData={shopData}/>}/>
                 <Route path="about" element={<T1_About shopData={shopData}/>} />

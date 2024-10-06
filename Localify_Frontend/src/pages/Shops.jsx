@@ -66,11 +66,7 @@ function Shops() {
   }, [sortOption]); // Remove `filteredShops` from the dependencies
 
   const goToShop=(shoptheme,sid)=>{
-    if(shoptheme=="theme_1")
-    {
-      console.log("shop",sid);
-      navigate("/shops/"+sid)
-    }
+    navigate("/shops/"+sid+"/home");
   }
 
   return (
