@@ -112,11 +112,11 @@ const T2_Home = ({ shopData }) => {
   ];
 
   return (
-    <div className="bg-gray-900 min-h-screen text-gray-100">
+    <div className="bg-gray-900 min-h-screen text-gray-100 flex">
       <ScrollProgress />
       
       {/* Sidebar */}
-      <div className="fixed left-0 top-0 bottom-0 w-64 bg-gray-800 p-6 overflow-y-auto">
+      <div className="left-0 top-0 bottom-0 w-[50%] bg-gray-800 p-6">
         <h1 className="text-3xl font-bold mb-6">{shopData.name}</h1>
         <nav className="mb-8">
           <ul className="space-y-2">
@@ -134,7 +134,7 @@ const T2_Home = ({ shopData }) => {
       </div>
 
       {/* Main Content */}
-      <div className="ml-64 p-8">
+      <div className="p-8">
         <header className="mb-12 text-center">
           <h2 className="text-4xl font-bold mb-4">{shopData.tagline}</h2>
           <p className="text-xl text-gray-400">{shopData.category}</p>
