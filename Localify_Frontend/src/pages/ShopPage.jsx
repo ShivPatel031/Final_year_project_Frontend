@@ -9,6 +9,7 @@ import T1_About from "../component/Theme_1/T1_About";
 import T1_Contact from "../component/Theme_1/T1_Contact";
 import T1_Product from "../component/Theme_1/T1_Products";
 import { T1_Footer } from "../component/Theme_1/T1_Footer";
+import T1_ProductPage from "../component/Theme_1/T1_ProductPage";
 axios.defaults.withCredentials = true;
 
 function ShopPage() {
@@ -66,7 +67,8 @@ function ShopPage() {
                 <Route path='' element={<T1_Home shopData={shopData}/>}/>
                 <Route path="about" element={<T1_About shopData={shopData}/>} />
                 <Route path="contact" element={<T1_Contact />} />
-                <Route path="product" element={<T1_Product />} />
+                <Route path="product" element={<T1_Product id={shopData._id}/>} />
+                <Route path="product-page/:id" element={<T1_ProductPage />}/>
               </Routes>
       <T1_Footer/>
        

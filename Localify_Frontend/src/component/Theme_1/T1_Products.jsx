@@ -3,34 +3,10 @@ import { MdStarRate } from "react-icons/md";
 import axios from "axios";
 import debounce from "lodash/debounce";
 import Cookies from "js-cookie";
+import T1_ProductCard from "./T1_Productcard";
 
-function ProductCard({ product }) {
-  return (
-    <div className="w-[300px] bg-white shadow-lg  flex flex-col justify-between items-center rounded-lg border border-slate-300">
-      <img
-        src={product.primary_image}
-        alt={product.name}
-        className="w-full h-48 object-cover"
-      />
-      <div className="p-4">
-        <h2 className="text-xl font-semibold mb-2">{product.name}</h2>
-        <p className="text-gray-700 mb-4">{product.description.substring(1,100)}.</p>
-        <div className="flex justify-between items-center mb-2">
-          <span className="text-lg font-bold">${product.price.original}</span>
-          <span className="text-sm font-medium flex items-center">
-            <MdStarRate />
-            {product.rating}
-          </span>
-        </div>
-        <button className="w-full h-[40px] px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
-          Add to Cart
-        </button>
-      </div>
-    </div>
-  );
-}
 
-function T1_Product() {
+function T1_Product({id}) {
   const [featuredProducts,setFeaturedProducts]= useState([]);
   const [search, setSearch] = useState("");
   const [sortOption, setSortOption] = useState("");
@@ -50,7 +26,7 @@ function T1_Product() {
 
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://${import.meta.env.VITE_BACKEND_ROUTE}:3000/api/products/featuredProducts/${shopID}`, {
+        const response = await axios.get(`http://${import.meta.env.VITE_BACKEND_ROUTE}:3000/api/products/featuredProducts/${id}`, {
           headers: {
             'Content-Type': 'application/json',
             'auth_token': auth_token,
@@ -218,9 +194,11 @@ function T1_Product() {
 
         {/* Product Cards */}
         <div className="bg-white shadow-lg p-6 gap-10 border-slate-300 border-[4px] w-[70vw] rounded-xl shadow-black/20 flex justify-center items-center flex-wrap overflow-scroll">
-        {featuredProducts.map((prod) => (
-          <ProductCard product={prod} />
-        ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {featuredProducts.map((product) => (
+              <T1_ProductCard key={product.id} product={product} />
+            ))}
+          </div>
         </div>
       </div>
     </div>
