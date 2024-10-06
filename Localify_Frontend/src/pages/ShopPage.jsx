@@ -66,9 +66,9 @@ function ShopPage() {
       
       {shopData.theme === "theme_1" ? 
       (<>
-        <T1_Nav shopLogo={shopData.logo} shopId={shopData._id}/>
+        <T1_Nav shopLogo={shopData.logo} shopId={shopData._id} shopName={shopData.name}/>
               <Routes>
-                <Route path='' element={<T1_Home shopData={shopData}/>}/>
+                <Route path='home' element={<T1_Home shopData={shopData}/>}/>
                 <Route path="about" element={<T1_About shopData={shopData}/>} />
                 <Route path="contact" element={<T1_Contact />} />
                 <Route path="product" element={<T1_Product id={shopData._id}/>} />
@@ -79,7 +79,7 @@ function ShopPage() {
       (<>
         <T1_Nav shopLogo={shopData.logo} shopId={shopData._id}/>
               <Routes>
-                <Route path='' element={<T2_Home shopData={shopData}/>}/>
+                <Route path='home' element={<T2_Home shopData={shopData}/>}/>
                 <Route path="about" element={<T1_About shopData={shopData}/>} />
                 <Route path="contact" element={<T1_Contact />} />
                 <Route path="product" element={<T1_Product id={shopData._id}/>} />

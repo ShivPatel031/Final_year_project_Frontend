@@ -39,7 +39,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FiSearch, FiMenu, FiX } from 'react-icons/fi';
 
-const ShopNav = ({ shopLogo, shopId }) => {
+const ShopNav = ({ shopLogo, shopId,shopName }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -50,7 +50,7 @@ const ShopNav = ({ shopLogo, shopId }) => {
   };
 
   const navItems = [
-    { path: `/shops/${shopId}/`, label: 'Home' },
+    { path: `/shops/${shopId}/home`, label: 'Home' },
     { path: `/shops/${shopId}/product`, label: 'Products' },
     { path: `/shops/${shopId}/contact`, label: 'Contact' },
     { path: `/shops/${shopId}/about`, label: 'About' },
@@ -62,7 +62,7 @@ const ShopNav = ({ shopLogo, shopId }) => {
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center">
             <img src={shopLogo} alt="shop logo" className="w-12 h-12 mr-4" />
-            <h1 className="text-2xl font-bold text-indigo-600">Shop Name</h1>
+            <h1 className="text-2xl font-bold text-indigo-600">{shopName}</h1>
           </div>
 
           {/* Desktop Menu */}
