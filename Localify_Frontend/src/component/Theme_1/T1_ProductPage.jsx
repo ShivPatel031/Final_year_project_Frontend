@@ -12,7 +12,7 @@ const T1_ProductPage = () => {
     async function fetchData()
     {
       try {
-        const response = await axios.get(`http://${import.meta.env.VITE_BACKEND_ROUTE}:3000/api/products/${id}`);
+        const response = await axios.get(`http://${import.meta.env.VITE_BACKEND_ROUTE}/api/products/${id}`);
         if(response.status == 200) setProductData(response.data.product)
 
       } catch (error) {

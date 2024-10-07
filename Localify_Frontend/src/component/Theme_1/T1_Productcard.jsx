@@ -1,11 +1,26 @@
 import {FaStar} from 'react-icons/fa';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+axios.defaults.withCredentials=true;
 
 
 
 const T1_ProductCard = ({ product }) =>
 {
     const navigate = useNavigate();
+    const user = useSelector(state=>state.user.userInfo);
+
+    const addToMyCart = async ()=>
+    {
+        let data = {productId:product._id,shopId:product.shop_id,userId:user.id};
+        try {
+            const response = await axios.post(`http://${import.meta.env.VITE_BACKEND_ROUTE}/`,data)
+            console.log(response);
+        } catch (error) {
+            console.log("got erro while adding to cart "+error)
+        }
+    }
     
     return (
         <div className="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:scale-105">

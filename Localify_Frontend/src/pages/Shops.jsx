@@ -21,7 +21,7 @@ function Shops() {
   useEffect(() => {
     const fetchShops = async () => {
       try {
-        const { data } = await axios.get(`http://${import.meta.env.VITE_BACKEND_ROUTE}:3000/api/shops?page=${currentPage}`);
+        const { data } = await axios.get(`http://${import.meta.env.VITE_BACKEND_ROUTE}/api/shops?page=${currentPage}`);
         console.log(data.shops);
         setShops(data.shops);
         setTotalPages(data.totalPages);

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Trash2, Minus, Plus } from "lucide-react";
+import { useSelector } from "react-redux";
 
 const Button = ({ children, className, ...props }) => (
   <button
@@ -122,6 +123,8 @@ const CartItem = ({ product, setProducts }) => {
 const CartPage = () => {
   const [products, setProducts] = useState(productsArray);
   const [subTotal, setSubTotal] = useState(0);
+  const user = useSelector(state=>state.user.userInfo);
+  console.log(user?.id);
 
   useEffect(() => {
     const sum = products.reduce((acc, product) => acc + product.total, 0);
@@ -129,7 +132,7 @@ const CartPage = () => {
   }, [products]);
 
   return (
-    <div className="container mt-16 px-4 py-8">
+    <div className="container px-4 py-8">
       <h1 className="text-3xl font-bold mb-8">Your Cart</h1>
       <div className="grid gap-8 md:grid-cols-3">
         <Card className="md:col-span-2">

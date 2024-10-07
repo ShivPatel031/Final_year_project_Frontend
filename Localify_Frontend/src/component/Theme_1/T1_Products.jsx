@@ -26,7 +26,7 @@ function T1_Product({id}) {
 
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://${import.meta.env.VITE_BACKEND_ROUTE}:3000/api/products/featuredProducts/${id}`, {
+        const response = await axios.get(`http://${import.meta.env.VITE_BACKEND_ROUTE}/api/products/featuredProducts/${id}`, {
           headers: {
             'Content-Type': 'application/json',
             'auth_token': auth_token,

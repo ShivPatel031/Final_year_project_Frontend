@@ -12,6 +12,7 @@ import { T1_Footer } from "../component/Theme_1/T1_Footer";
 import T1_ProductPage from "../component/Theme_1/T1_ProductPage";
 import T2_Home from "../component/Theme_2/T2_Home";
 import T2_Nav from "../component/Theme_2/T2_Nav";
+import CartPage from "./CartPage";
 axios.defaults.withCredentials = true;
 
 function ShopPage() {
@@ -28,7 +29,7 @@ function ShopPage() {
   const fetchShopData = async () => {
     try {
       const response = await axios(
-        `http://${import.meta.env.VITE_BACKEND_ROUTE}:3000/api/shops/${shopId}`,{
+        `http://${import.meta.env.VITE_BACKEND_ROUTE}/api/shops/${shopId}`,{
           headers: {
               'Content-Type': 'application/json', 
               'auth_token': auth_token, 
@@ -74,6 +75,7 @@ function ShopPage() {
                 <Route path="contact" element={<T1_Contact />} />
                 <Route path="product" element={<T1_Product id={shopData._id}/>} />
                 <Route path="product-page/:id" element={<T1_ProductPage />}/>
+                <Route path="cart" element={<CartPage />}/>
               </Routes>
         <T1_Footer/>
       </>):
@@ -85,6 +87,7 @@ function ShopPage() {
                 <Route path="contact" element={<T1_Contact />} />
                 <Route path="product" element={<T1_Product id={shopData._id}/>} />
                 <Route path="product-page/:id" element={<T1_ProductPage />}/>
+                <Route path="cart" element={<CartPage />}/>
               </Routes>
         <T1_Footer/>
       </>)}

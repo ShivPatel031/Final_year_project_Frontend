@@ -486,7 +486,7 @@ const T2_Home = ({ shopData }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://${import.meta.env.VITE_BACKEND_ROUTE}:3000/api/products/featuredProducts/${shopData._id}`, {
+        const response = await axios.get(`http://${import.meta.env.VITE_BACKEND_ROUTE}/api/products/featuredProducts/${shopData._id}`, {
           headers: {
             'Content-Type': 'application/json',
             'auth_token': auth_token,

@@ -34,7 +34,7 @@ const LoginForm = ({setAddShop}) => {
 
     e.preventDefault();
     try {
-      const response = await axios.post(`http://${import.meta.env.VITE_BACKEND_ROUTE}:3000/api/users/login`, formData);
+      const response = await axios.post(`http://${import.meta.env.VITE_BACKEND_ROUTE}/api/users/login`, formData);
       console.log(response.data)
       const {auth_token,user_token} = response.data;
       const {role,id} = response.data.user;
@@ -46,7 +46,7 @@ const LoginForm = ({setAddShop}) => {
       
       if(role=="shopkeeper"){
         try{
-          var shop_id=await axios.get(`http://${import.meta.env.VITE_BACKEND_ROUTE}:3000/api/shops/getId/`+id)
+          var shop_id=await axios.get(`http://${import.meta.env.VITE_BACKEND_ROUTE}/api/shops/getId/`+id)
           console.log(`${shop_id.status()} consoling`);
         }
         catch(error){
@@ -59,7 +59,7 @@ const LoginForm = ({setAddShop}) => {
       setTimeout(() => {
         if(shop_id){
           Cookies.set('Shopid',shop_id.data.shopId,{ expires: 5})
-          navigate("/shops/"+shop_id.data.shopId)
+          navigate("/shops/"+shop_id.data.shopId+"/home")
         }
         else{
           navigate("/")

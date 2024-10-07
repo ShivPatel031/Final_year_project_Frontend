@@ -100,7 +100,7 @@ const AddProducts = ({shopId,fetchProductData}) => {
     try {
       console.log(data);
       const response = await axios.post(
-        `http://${import.meta.env.VITE_BACKEND_ROUTE}:3000/api/products/add`,
+        `http://${import.meta.env.VITE_BACKEND_ROUTE}/api/products/add`,
         data,
         {
           headers: {

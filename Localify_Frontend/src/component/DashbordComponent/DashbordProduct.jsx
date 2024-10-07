@@ -34,7 +34,7 @@ function DashbordProduct({shopId}){
 
   const fetchProductData = async (shopId) => {
     try {
-      const response = await axios.get(`http://${import.meta.env.VITE_BACKEND_ROUTE}:3000/api/products/shop/${shopId}`, {
+      const response = await axios.get(`http://${import.meta.env.VITE_BACKEND_ROUTE}/api/products/shop/${shopId}`, {
         headers: {
           'Content-Type': 'application/json',
           'auth_token': auth_token,

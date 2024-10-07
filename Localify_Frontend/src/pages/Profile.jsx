@@ -20,7 +20,7 @@ const Profile = () => {
   const fetchShopData = async (shopId) => {
     try {
       const response = await axios(
-        `http://${import.meta.env.VITE_BACKEND_ROUTE}:3000/api/shops/${shopId}`,{
+        `http://${import.meta.env.VITE_BACKEND_ROUTE}/api/shops/${shopId}`,{
           headers: {
               'Content-Type': 'application/json', 
               'auth_token': auth_token, 
@@ -39,7 +39,7 @@ const Profile = () => {
   const fetchShopIfExist= async(id)=>{
 
       try {
-          const respo = await axios(`http://${import.meta.env.VITE_BACKEND_ROUTE}:3000/api/shops/getId/${id}`);
+          const respo = await axios(`http://${import.meta.env.VITE_BACKEND_ROUTE}/api/shops/getId/${id}`);
           console.log(respo)
           if(respo) 
           {
@@ -54,7 +54,7 @@ const Profile = () => {
   const fetchUserData = async () => {
     try {
       const response = await axios(
-        `http://${import.meta.env.VITE_BACKEND_ROUTE}:3000/api/users/${id}`,{
+        `http://${import.meta.env.VITE_BACKEND_ROUTE}/api/users/${id}`,{
           headers: {
               'Content-Type': 'application/json', 
               'auth_token': auth_token, 

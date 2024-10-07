@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { FiSearch, FiMenu, FiX, FiShoppingCart } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const T2_Nav = ({ shopLogo, shopId, shopName }) => {
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -65,7 +66,9 @@ const T2_Nav = ({ shopLogo, shopId, shopName }) => {
                 <FiSearch className="text-xl" />
               </button>
             </form>
-            <button className="text-gray-600 hover:text-purple-600 transition-colors duration-200">
+            <button 
+              className="text-gray-600 hover:text-purple-600 transition-colors duration-200"
+              onClick={()=>navigate(`/shops/${shopId}/cart`)}>
               <FiShoppingCart className="text-2xl" />
             </button>
           </div>
@@ -124,7 +127,8 @@ const T2_Nav = ({ shopLogo, shopId, shopName }) => {
                   <FiSearch className="text-xl" />
                 </button>
               </form>
-              <button className="mt-4 w-full text-left py-2 px-4 text-sm text-gray-600 hover:text-purple-600 transition-colors duration-200">
+              <button 
+                className="mt-4 w-full text-left py-2 px-4 text-sm text-gray-600 hover:text-purple-600 transition-colors duration-200">
                 <FiShoppingCart className="inline-block mr-2 text-xl" /> Cart
               </button>
             </motion.div>

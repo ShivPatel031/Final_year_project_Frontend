@@ -39,7 +39,7 @@ const SignupForm = () => {
     }
     try {
       const response = await axios.post(
-        `http://${import.meta.env.VITE_BACKEND_ROUTE}:3000/api/users/register`,formData);
+        `http://${import.meta.env.VITE_BACKEND_ROUTE}/api/users/register`,formData);
       toast.success(response.data.message || "Registration successful");
     } catch (error) {
       toast.error(error.response?.data?.message || "Registration failed");

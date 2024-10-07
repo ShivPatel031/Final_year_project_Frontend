@@ -26,7 +26,7 @@ export default function ShopkeeperDashboard() {
 
     const fetchProductData = async (shopId) => {
       try {
-        const response = await axios.get(`http://${import.meta.env.VITE_BACKEND_ROUTE}:3000/api/products/shop/${shopId}`, {
+        const response = await axios.get(`http://${import.meta.env.VITE_BACKEND_ROUTE}/api/products/shop/${shopId}`, {
           headers: {
             'Content-Type': 'application/json',
             'auth_token': auth_token,
@@ -43,7 +43,7 @@ export default function ShopkeeperDashboard() {
     const fetchShopData = async (shopId) => {
       try {
         const response = await axios(
-          `http://${import.meta.env.VITE_BACKEND_ROUTE}:3000/api/shops/${shopId}`,{
+          `http://${import.meta.env.VITE_BACKEND_ROUTE}/api/shops/${shopId}`,{
             headers: {
                 'Content-Type': 'application/json', 
                 'auth_token': auth_token, 
@@ -63,7 +63,7 @@ export default function ShopkeeperDashboard() {
     const fetchShopIfExist= async()=>{
 
         try {
-            const respo = await axios(`http://${import.meta.env.VITE_BACKEND_ROUTE}:3000/api/shops/getId/${user.id}`);
+            const respo = await axios(`http://${import.meta.env.VITE_BACKEND_ROUTE}/api/shops/getId/${user.id}`);
             console.log(respo)
             if(respo) 
             {
@@ -86,7 +86,7 @@ export default function ShopkeeperDashboard() {
     // Simulate API call to delete product
     console.log(id);
     try {
-        const response = await axios.get(`http://${import.meta.env.VITE_BACKEND_ROUTE}:3000/api/products/delete/${id}`, {
+        const response = await axios.get(`http://${import.meta.env.VITE_BACKEND_ROUTE}/api/products/delete/${id}`, {
           headers: {
             'Content-Type': 'application/json',
             'auth_token': auth_token,

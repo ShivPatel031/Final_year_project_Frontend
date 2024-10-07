@@ -36,10 +36,11 @@
 // export default ShopNav;
 
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import { FiSearch, FiMenu, FiX } from 'react-icons/fi';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { FiSearch, FiMenu, FiX, FiShoppingCart} from 'react-icons/fi';
 
 const ShopNav = ({ shopLogo, shopId,shopName }) => {
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -99,6 +100,11 @@ const ShopNav = ({ shopLogo, shopId,shopName }) => {
             >
               <FiSearch className="text-xl" />
             </button>
+            <button 
+              className="w-full text-left py-2 px-4 text-sm text-gray-600 hover:ring-indigo-900 transition-colors duration-200"
+              onClick={()=>navigate(`/shops/${shopId}/cart`)}>
+                <FiShoppingCart className="text-xl" />
+            </button>
           </form>
 
           {/* Mobile Menu Button */}
@@ -113,6 +119,8 @@ const ShopNav = ({ shopLogo, shopId,shopName }) => {
             )}
           </button>
         </div>
+
+        
 
         {/* Mobile Menu */}
         {isMenuOpen && (
@@ -148,8 +156,10 @@ const ShopNav = ({ shopLogo, shopId,shopName }) => {
                 <FiSearch className="text-xl" />
               </button>
             </form>
+            
           </div>
         )}
+        
       </div>
     </nav>
   );

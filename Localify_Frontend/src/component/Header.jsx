@@ -89,11 +89,19 @@ function Header() {
                 Manage Shop
               </li>
             ) : 
-            (<li
+            (
+            <>
+            <li
               onClick={()=>{navigate("/cart");setIsOpen(false);}}
               className="hover:bg-white hover:text-slate-950 border-white w-full p-1 cursor-pointer rounded-md">
               Cart
-            </li>)
+            </li>
+            <li
+              onClick={()=>{navigate("/cart");setIsOpen(false);}}
+              className="hover:bg-white hover:text-slate-950 border-white w-full p-1 cursor-pointer rounded-md">
+              Orders
+            </li>
+            </>)
             }
             <li
               className="hover:bg-red-400 hover:text-slate-100 border-white w-full p-1 cursor-pointer rounded-md"
