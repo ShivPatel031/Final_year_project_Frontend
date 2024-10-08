@@ -9,14 +9,15 @@ axios.defaults.withCredentials=true;
 const T1_ProductCard = ({ product }) =>
 {
     const navigate = useNavigate();
-    const user = useSelector(state=>state.user.userInfo);
+    const user = JSON.parse(localStorage.getItem("userData"));
 
     const addToMyCart = async ()=>
     {
-        let data = {productId:product._id,shopId:product.shop_id,userId:user.id};
+        let data = {product_id:product._id,shop_id:product.shop_id,customer_id:user.id};
+        console.log(data);
         try {
-            const response = await axios.post(`http://${import.meta.env.VITE_BACKEND_ROUTE}/`,data)
-            console.log(response);
+            const response = await axios.post(`http://${import.meta.env.VITE_BACKEND_ROUTE}/api/carts/add-to-cart`,data)
+            console.log(response.message);
         } catch (error) {
             console.log("got erro while adding to cart "+error)
         }
@@ -37,7 +38,9 @@ const T1_ProductCard = ({ product }) =>
             </div>
             
             </div>
-            <button className="m-3 w-[93%] bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-700 transition-colors duration-300">
+            <button 
+                className="m-3 w-[93%] bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-700 transition-colors duration-300"
+                onClick={()=>addToMyCart()}>
                 Add to Cart
             </button>
         </div>

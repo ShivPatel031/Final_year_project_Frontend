@@ -75,7 +75,7 @@ function ShopPage() {
                 <Route path="contact" element={<T1_Contact />} />
                 <Route path="product" element={<T1_Product id={shopData._id}/>} />
                 <Route path="product-page/:id" element={<T1_ProductPage />}/>
-                <Route path="cart" element={<CartPage />}/>
+                <Route path="cart" element={<CartPage shop_id={shopData._id} />}/>
               </Routes>
         <T1_Footer/>
       </>):
@@ -87,7 +87,7 @@ function ShopPage() {
                 <Route path="contact" element={<T1_Contact />} />
                 <Route path="product" element={<T1_Product id={shopData._id}/>} />
                 <Route path="product-page/:id" element={<T1_ProductPage />}/>
-                <Route path="cart" element={<CartPage />}/>
+                <Route path="cart" element={<CartPage shop_id={shopData._id}/>}/>
               </Routes>
         <T1_Footer/>
       </>)}
