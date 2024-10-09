@@ -5,17 +5,50 @@ import { useParams } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { ToastContainer, toast } from "react-toastify";
 import axios from 'axios';
+import MultiShopCart from '../component/MultiShopCart';
+
+const cartData = [
+  {
+    shop_id: "66cf15a23d5b684caf739089",
+    shopInfo: {
+      name: "Shop Name",
+      location: "Shop Location",
+      logo: "/path/to/shop/logo.png"
+    },
+    products: [
+      {
+        _id: "67055c24dc416abec970852f",
+        name: "Product Name",
+        price: 19.99,
+        quantity: 2,
+        image: "/path/to/product/image.png"
+      },
+    ]
+  },
+];
 
 const Profile = () => {
     const {id} = useParams();
     console.log(id);
     const [user,setUser] = useState(null);
     const [shop,setShop] = useState(null);
-  const [cartItems, setCartItems] = useState([]);
+  const [carts, setCarts] = useState([]);
   const [orders, setOrders] = useState([]);
-  const [editingCartItem, setEditingCartItem] = useState(null);
   const auth_token = Cookies.get("auth_token");
   const user_token = Cookies.get("user_token");
+  console.log(carts);
+
+  const fetchCartData = async()=>{
+    const user_id=id;
+    try {
+      const response = await axios(`http://${import.meta.env.VITE_BACKEND_ROUTE}/api/carts/get-all-cart/${user_id}`);
+
+      setCarts(response.data.data);
+      
+    } catch (error) {
+      console.error("Error removing product from cart:", error);
+    }
+  }
 
   const fetchShopData = async (shopId) => {
     try {
@@ -68,14 +101,36 @@ const Profile = () => {
       toast.error(error.message || "Data Fetch Failed");
     }
   };
+  // useEffect(()=>{
+  //   async function getshops()
+  //   {
+  //     carts.forEach(async (data)=>{
+  //       let products =[];
+  //       let shopInfo = {};
+  //       try {
+  //         shopInfo= await axios(
+  //           `http://${import.meta.env.VITE_BACKEND_ROUTE}/api/shops/${data.shop_id}`,{
+  //             headers: {
+  //                 'Content-Type': 'application/json', 
+  //                 'auth_token': auth_token, 
+  //                 'user_token': user_token 
+  //             },});
+  //       } catch (error) {
+  //         toast.error(error.message || "Data Fetch Failed");
+  //       }
+
+  //       carts.products.forEach((d)=>{
+
+  //       })
+  //     })
+  //   }
+  //   getshops();
+  // },[carts])
 
   useEffect(()=>{fetchUserData();},[]);
   useEffect(() => {
     if (user?.role === 'customer') {
-      setCartItems([
-        { id: '1', name: 'Product 1', price: 10, quantity: 2 },
-        { id: '2', name: 'Product 2', price: 20, quantity: 1 },
-      ]);
+      // fetchCartData();
     } else if (user?.role === 'shopkeeper') {
       setOrders([
         { id: '1', customer: 'John Doe', total: 30, status: 'Pending', date: '2024-09-01' },
@@ -90,22 +145,6 @@ const Profile = () => {
     return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
   };
 
-  const handleEditCartItem = (id) => {
-    setEditingCartItem(id);
-  };
-
-  const handleUpdateCartItem = (id, newQuantity) => {
-    setCartItems(prevItems =>
-      prevItems.map(item =>
-        item.id === id ? { ...item, quantity: newQuantity } : item
-      )
-    );
-    setEditingCartItem(null);
-  };
-
-  const handleDeleteCartItem = (id) => {
-    setCartItems(prevItems => prevItems.filter(item => item.id !== id));
-  };
 
   if (!user) {
     return <div className="container mx-auto px-4 py-8">User data not available</div>;
@@ -169,46 +208,10 @@ const Profile = () => {
             </div>
           </div>
         </div>
+
         
-        {user.role === 'customer' && (
-          <div className="bg-gray-100 p-6">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">Cart Items</h2>
-            {cartItems.length === 0 ? (
-              <p>Your cart is empty.</p>
-            ) : (
-              <ul className="space-y-4">
-                {cartItems.map(item => (
-                  <li key={item.id} className="flex items-center justify-between bg-white p-4 rounded-lg shadow">
-                    <span>{item.name} - ${item.price}</span>
-                    {editingCartItem === item.id ? (
-                      <div>
-                        <input
-                          type="number"
-                          value={item.quantity}
-                          onChange={(e) => handleUpdateCartItem(item.id, parseInt(e.target.value))}
-                          className="w-16 px-2 py-1 border rounded mr-2"
-                        />
-                        <button onClick={() => setEditingCartItem(null)} className="text-blue-600">
-                          Save
-                        </button>
-                      </div>
-                    ) : (
-                      <div>
-                        <span className="mr-4">Quantity: {item.quantity}</span>
-                        <button onClick={() => handleEditCartItem(item.id)} className="text-blue-600 mr-2">
-                          <Edit className="w-5 h-5" />
-                        </button>
-                        <button onClick={() => handleDeleteCartItem(item.id)} className="text-red-600">
-                          <Trash2 className="w-5 h-5" />
-                        </button>
-                      </div>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        )}
+        
+        {/* {user.role === 'customer' && <MultiShopCart cartData={cartData}/>} */}
 
         {user.role === 'shopkeeper' && shop && (
           <>

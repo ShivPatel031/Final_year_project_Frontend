@@ -15,6 +15,7 @@ import AddShop from "./component/AddShop.jsx";
 import Dashbord from "./pages/Dashbord.jsx";
 import CartPage from "./pages/CartPage.jsx";
 import Profile from "./pages/Profile.jsx";
+import DashboardOrders from "./component/DashbordComponent/DashbordOrders.jsx";
 
 function App() {
 
@@ -39,7 +40,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/dashbord/*" element={<Dashbord />} />
           <Route path="/profile/:id" element={<Profile />} />
-          <Route path="/cart" element={<CartPage />}/>
+          <Route path="/orders" element={<DashboardOrders />}/>
        </Routes>
        {location.pathname !== "/login" && location.pathname !== "/signup" && location.pathname.substring(0,7) !== "/shops/" &&  <Footer />}
        

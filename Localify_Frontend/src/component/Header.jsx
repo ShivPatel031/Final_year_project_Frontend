@@ -92,12 +92,7 @@ function Header() {
             (
             <>
             <li
-              onClick={()=>{navigate("/cart");setIsOpen(false);}}
-              className="hover:bg-white hover:text-slate-950 border-white w-full p-1 cursor-pointer rounded-md">
-              Cart
-            </li>
-            <li
-              onClick={()=>{navigate("/cart");setIsOpen(false);}}
+              onClick={()=>{navigate("/orders");setIsOpen(false);}}
               className="hover:bg-white hover:text-slate-950 border-white w-full p-1 cursor-pointer rounded-md">
               Orders
             </li>
