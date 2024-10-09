@@ -2,11 +2,18 @@ import React from 'react';
 import { ShoppingBag, MapPin } from 'lucide-react';
 
 const OrderDetails = ({ order, shopDetails, productDetails }) => {
+
+  shopDetails=order.shopDetails;
+  productDetails=order.productDetails;
+  order=order.cart;
+
+  console.log(productDetails);
+
   return (
     <div className="bg-white shadow-lg rounded-lg overflow-hidden max-w-4xl mx-auto my-8">
       <div className="bg-gradient-to-r from-purple-500 to-indigo-600 p-6 text-white">
         <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-bold">Order #{order._id.$oid.slice(-6)}</h2>
+          {/* <h2 className="text-2xl font-bold">Order #{order._id.$oid.slice(-6)}</h2> */}
           <span className="px-3 py-1 bg-white text-indigo-600 rounded-full text-sm font-semibold">
             {order.status.toUpperCase()}
           </span>
@@ -23,28 +30,27 @@ const OrderDetails = ({ order, shopDetails, productDetails }) => {
           />
           <div>
             <h3 className="text-xl font-semibold">{shopDetails.name}</h3>
-            <p className="text-gray-600">Shop ID: {order.shop_id.$oid}</p>
+            <p className="text-gray-600">Shop ID: {order.shop_id}</p>
           </div>
         </div>
 
         <div className="border-t border-b border-gray-200 py-4 mb-6">
           <h4 className="text-lg font-semibold mb-4">Order Items</h4>
-          {order.products.map((item) => {
-            const product = productDetails.find(p => p._id.$oid === item.product_id.$oid);
+          {productDetails.map((item) => {
             return (
-              <div key={item._id.$oid} className="flex items-center justify-between mb-4 last:mb-0">
+              <div key={item._id} className="flex items-center justify-between mb-4 last:mb-0">
                 <div className="flex items-center">
                   <img
-                    src={product?.image || '/placeholder.svg?height=80&width=80'}
-                    alt={product?.name}
+                    src={item?.primary_image || '/placeholder.svg?height=80&width=80'}
+                    alt={item?.name}
                     className="w-20 h-20 object-cover rounded-md mr-4"
                   />
                   <div>
-                    <h5 className="font-semibold">{product?.name || 'Product Name'}</h5>
+                    <h5 className="font-semibold">{item?.name || 'Product Name'}</h5>
                     <p className="text-gray-600">Quantity: {item.quantity}</p>
                   </div>
                 </div>
-                <p className="font-semibold">₹{product?.price || 0}</p>
+                <p className="font-semibold">₹{item?.price.original || 0}</p>
               </div>
             );
           })}

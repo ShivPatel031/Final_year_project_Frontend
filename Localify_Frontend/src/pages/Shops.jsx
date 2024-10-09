@@ -85,10 +85,10 @@ function Shops() {
               />
               <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
             </div>
-            {/* <Button variant="outline" size="icon">
+            <Button variant="outline" size="icon">
               <FaShoppingBag className="h-5 w-5" />
               <span className="sr-only">Shopping cart</span>
-            </Button> */}
+            </Button>
           </div>
         </div>
       </header>
@@ -153,13 +153,13 @@ function Shops() {
                 </div>
               </CardContent>
               <CardFooter>
-                <Button onClick={()=>goToShop(shop.theme,shop._id)}>View Shop</Button>
+                <Button onClick={()=>goToShop(shop._id)}>View Shop</Button>
               </CardFooter>
             </Card>
           ))}
         </div>
 
-        {/* <div className="mt-8 flex justify-between">
+        <div className="mt-8 flex justify-between">
           <Button
             disabled={currentPage === 1}
             onClick={() => setCurrentPage(prev => prev - 1)}
@@ -173,7 +173,7 @@ function Shops() {
           >
             Next
           </Button>
-        </div> */}
+        </div>
       </main>
     </div>
   );

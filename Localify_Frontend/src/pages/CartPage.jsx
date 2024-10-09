@@ -121,8 +121,8 @@ const CartPage = ({ shop_id }) => {
 
   const fetchProductsData = useCallback(async (cartProducts) => {
     try {
-      const productPromises = cartProducts.map(item => 
-        axios.get(`http://${import.meta.env.VITE_BACKEND_ROUTE}/api/products/${item.product_id}`)
+      const productPromises = cartProducts.map(async(item) => 
+        await axios.get(`http://${import.meta.env.VITE_BACKEND_ROUTE}/api/products/${item.product_id}`)
       );
       const productResponses = await Promise.all(productPromises);
       const fetchedProducts = productResponses.map((response, index) => ({
