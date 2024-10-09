@@ -151,7 +151,7 @@ const Profile = () => {
   }
 
   return (
-    <div className="container px-4 py-8 mt-14">
+    <div className="container px-4 py-8 mt-14 h-screen">
         <ToastContainer
         autoClose={3000}
         hideProgressBar={false}
@@ -189,7 +189,7 @@ const Profile = () => {
               </p>
               <p className="flex items-center text-gray-700">
                 <Calendar className="w-5 h-5 mr-2" />
-                Born on {formatDate(user.dob?.$date)}
+                Born on {formatDate(user.dob)}
               </p>
               <p className="flex items-center text-gray-700">
                 <User className="w-5 h-5 mr-2" />
@@ -199,11 +199,11 @@ const Profile = () => {
             <div className="space-y-3">
               <p className="flex items-center text-gray-700">
                 <Calendar className="w-5 h-5 mr-2" />
-                Joined on {formatDate(user.createdAt?.$date)}
+                Joined on {formatDate(user.createdAt)}
               </p>
               <p className="flex items-center text-gray-700">
                 <Calendar className="w-5 h-5 mr-2" />
-                Last updated on {formatDate(user.updatedAt?.$date)}
+                Last updated on {formatDate(user.updatedAt)}
               </p>
             </div>
           </div>

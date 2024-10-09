@@ -46,6 +46,7 @@ function Header() {
         <img
           src={`https://res.cloudinary.com/dtdixmfnd/image/upload/v1725194744/logo_x3cqrq.png`}
           alt="logo"
+          onClick={()=>navigate("/")}
         />
       </div>
       <div className="h-[95%] flex justify-between overflow-visible">

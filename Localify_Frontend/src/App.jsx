@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import { Footer } from "./component/Footer";
 import { Header } from "./component/Header";
 import { Outlet, Routes,Route ,useLocation, BrowserRouter} from "react-router-dom";
-import AskToRegisterAsShopkeeper from "./component/AskToRegisterAsShopkeeper.jsx";
 import Home_Page from './pages/Home_Page.jsx'
 import About from './pages/About.jsx'
 import Contact from './pages/Contact.jsx'
@@ -13,9 +12,8 @@ import Signup from './pages/Signup.jsx'
 import ShopPage from "./pages/ShopPage.jsx";
 import AddShop from "./component/AddShop.jsx";
 import Dashbord from "./pages/Dashbord.jsx";
-import CartPage from "./pages/CartPage.jsx";
 import Profile from "./pages/Profile.jsx";
-import DashboardOrders from "./component/DashbordComponent/DashbordOrders.jsx";
+import OrderPage from "./pages/OrderPage.jsx";
 
 function App() {
 
@@ -40,7 +38,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/dashbord/*" element={<Dashbord />} />
           <Route path="/profile/:id" element={<Profile />} />
-          <Route path="/orders" element={<DashboardOrders />}/>
+          <Route path="/orders" element={<OrderPage/>}/>
        </Routes>
        {location.pathname !== "/login" && location.pathname !== "/signup" && location.pathname.substring(0,7) !== "/shops/" &&  <Footer />}
        

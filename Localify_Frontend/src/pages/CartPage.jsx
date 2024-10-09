@@ -96,9 +96,11 @@ const CartPage = ({ shop_id }) => {
   const [subTotal, setSubTotal] = useState(0);
   const [cart, setCart] = useState(null);
   const [city,setCity] = useState("");
+  const [address,setaddress]=useState("");
+  const [state,setstate] =useState("");
+  const [pin,setpin]=useState("");
   const [pop,setpop] = useState(false);
   const user = JSON.parse(localStorage.getItem("userData"));
-  console.log(products);
 
   const fetchCartData = useCallback(async () => {
     if (!user || !shop_id) return;
@@ -167,33 +169,67 @@ const CartPage = ({ shop_id }) => {
     }
   }, [cart]);
 
-  const giveOrder= ()=>{
-    console.log(products.reduce((data,d)=>{return [...data,{product_id:d._id,quantity:d.quantity}]},[]));
-    console.log("total amount :"+subTotal);
-    console.log("shopid is "+shop_id);
-    console.log("user id is"+user.id);
-    console.log("city is "+city);
+  const giveOrder= async ()=>{
+    const productarr = products.reduce((data,d)=>{return [...data,{product_id:d._id,quantity:d.quantity}]},[]);
+    const data = {customer_id:user.id,shop_id:shop_id,products:productarr,total:subTotal,delivery_location:{city:city,address:address,pincode:pin,address:address,state:state},cart_id:cart._id};
+    console.log(data);
+    setpin("");
+    setaddress("");
+    setstate("");
     setCity("");
+    try {
+      const response = await axios.post(`http://${import.meta.env.VITE_BACKEND_ROUTE}/api/orders/generate-order`,data);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
     setpop(false);
   }
 
   return (
     <>
-    {pop && <div className="h-screen flex flex-col justify-center items-center inset-0 opacity-[85%] w-screen bg-black fixed">
-          <div className="relative bg-white h-[30%] w-[50%] opacity-100 rounded-lg flex flex-col justify-center items-center gap-5">
+    {pop && <div className="h-screen flex flex-col justify-center items-center inset-0 opacity-[90%] w-screen bg-black fixed">
+          <div className="relative bg-white h-[60%] w-[40%] opacity-100 rounded-lg flex flex-col justify-center items-center ">
             <X className='absolute top-5 right-5' onClick={()=>setpop(false)}/>
-            <label>
-              City 
+            <label className="w-[90%]">
+              <p className="mx-4">Address :</p> 
+            <input 
+                type="text"
+                name="address"
+                value={address}
+                onChange={(e)=>setaddress(e.target.value)}
+                className="  border border-black w-full h-[30px] rounded-xl px-3 my-2"/>
+            </label>
+            <label className="w-[90%]">
+            <p className="mx-4">City :</p> 
             <input 
                 type="text"
                 name="city"
                 value={city}
                 onChange={(e)=>setCity(e.target.value)}
-                className=" ml-2 border border-black w-[80%] h-[30px] rounded-xl px-3"/>
+                className=" border border-black w-full h-[30px] rounded-xl px-3 my-2"/>
+            </label>
+            <label className="w-[90%]">
+            <p className="mx-4">State :</p> 
+            <input 
+                type="text"
+                name="state"
+                value={state}
+                onChange={(e)=>setstate(e.target.value)}
+                className=" border border-black w-full h-[30px] rounded-xl px-3 my-2"/>
             </label>
 
+            <label className="w-[90%]">
+            <p className="mx-4">Pin :</p> 
+            <input 
+                type="number"
+                name="pin"
+                value={pin}
+                onChange={(e)=>setpin(e.target.value)}
+                className=" border border-black w-full h-[30px] rounded-xl px-3 my-2"/>
+            </label>
             <Button 
-              className="w-[80%] bg-blue-600 hover:bg-blue-700 text-white"
+              className="w-[80%] bg-blue-600 hover:bg-blue-700 text-white mt-8"
               onClick={()=>giveOrder()}>
               Proceed to Checkout
             </Button>
