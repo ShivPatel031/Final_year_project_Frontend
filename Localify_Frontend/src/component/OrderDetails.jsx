@@ -30,7 +30,7 @@ const OrderDetails = ({ order, shopDetails, productDetails }) => {
           />
           <div>
             <h3 className="text-xl font-semibold">{shopDetails.name}</h3>
-            <p className="text-gray-600">Shop ID: {order.shop_id}</p>
+            {/* <p className="text-gray-600">Shop ID: {order.shop_id}</p> */}
           </div>
         </div>
 

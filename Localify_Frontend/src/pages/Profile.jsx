@@ -38,17 +38,17 @@ const Profile = () => {
   const user_token = Cookies.get("user_token");
   console.log(carts);
 
-  const fetchCartData = async()=>{
-    const user_id=id;
-    try {
-      const response = await axios(`http://${import.meta.env.VITE_BACKEND_ROUTE}/api/carts/get-all-cart/${user_id}`);
+  // const fetchCartData = async()=>{
+  //   const user_id=id;
+  //   try {
+  //     const response = await axios(`http://${import.meta.env.VITE_BACKEND_ROUTE}/api/carts/get-all-cart/${user_id}`);
 
-      setCarts(response.data.data);
+  //     setCarts(response.data.data);
       
-    } catch (error) {
-      console.error("Error removing product from cart:", error);
-    }
-  }
+  //   } catch (error) {
+  //     console.error("Error removing product from cart:", error);
+  //   }
+  // }
 
   const fetchShopData = async (shopId) => {
     try {

@@ -33,7 +33,7 @@ export default function ShopkeeperDashboard() {
             'user_token': user_token,
           },
         });
-        console.log(response);
+        // console.log(response);
         setProducts(response.data.products);
       } catch (error) {
         console.log(error.message || "Data Fetch Failed");
@@ -64,7 +64,7 @@ export default function ShopkeeperDashboard() {
 
         try {
             const respo = await axios(`http://${import.meta.env.VITE_BACKEND_ROUTE}/api/shops/getId/${user.id}`);
-            console.log(respo)
+            // console.log(respo)
             if(respo) 
             {
               await fetchShopData(respo.data.shopId);
@@ -168,7 +168,7 @@ export default function ShopkeeperDashboard() {
           <Route path="" element={<DashboardHome shop={shop} user={user} products={products} handleDeleteProduct={handleDeleteProduct} />}/>
           <Route path="addShop" element={<div className="fixed w-screen h-full top-0 left-0 bg-white z-20" ><AddProducts shopId={shop._id} fetchProductData={fetchProductData}/></div>}/>
           <Route path="products" element={<DashbordProduct shopId={shop._id}/>}/>
-          <Route path="orders" element={<DashboardOrders />} />
+          <Route path="orders" element={<DashboardOrders shop_id={shop._id} />} />
         </Routes>
       </div>
       

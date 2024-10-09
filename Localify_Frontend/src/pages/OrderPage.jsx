@@ -86,7 +86,6 @@ function OrderPage(){
             <div className="flex justify-center items-center w-screen h-[100px]">
                 <h2 className="text-[40px]">your orders</h2>
             </div>
-           
             {orders.map((data)=><OrderDetails order={data}/>)}
         </div>
         
