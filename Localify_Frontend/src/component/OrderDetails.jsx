@@ -1,5 +1,6 @@
 import React from 'react';
 import { ShoppingBag, MapPin } from 'lucide-react';
+import axios from 'axios';
 
 const OrderDetails = ({ order, shopDetails, productDetails }) => {
 
@@ -7,7 +8,28 @@ const OrderDetails = ({ order, shopDetails, productDetails }) => {
   productDetails=order.productDetails;
   order=order.cart;
 
-  console.log(productDetails);
+  const makeOrderComplete = async ()=>
+  {
+    let order_id = order._id;
+    try {
+      const response = await axios(`http://${import.meta.env.VITE_BACKEND_ROUTE}/api/orders/set-order-completed/${order_id}`);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const makeOrderCancel = async ()=>
+    {
+      let order_id = order._id;
+      try {
+        const response = await axios(`http://${import.meta.env.VITE_BACKEND_ROUTE}/api/orders/set-order-cancelled/${order_id}`);
+        console.log(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  
 
   return (
     <div className="bg-white shadow-lg rounded-lg overflow-hidden max-w-4xl mx-auto my-8">
@@ -76,6 +98,14 @@ const OrderDetails = ({ order, shopDetails, productDetails }) => {
             <br />
             {order.delivery_location.state} - {order.delivery_location.pincode}
           </p>
+        </div>
+        <div className='w-full h-[70px] flex justify-end items-center'>
+          {shopDetails.role && <button 
+            className='w-[200px] h-[50px] bg-purple-300 rounded-2xl'
+            onClick={()=>makeOrderComplete()}>Complete</button>}
+          {shopDetails.logo && order.status !== 'delivered'&& order.status !== 'cancelled' && <button 
+            className='w-[200px] h-[50px] bg-purple-300 rounded-2xl'
+            onClick={()=>makeOrderCancel()}>Cancel</button>}
         </div>
       </div>
     </div>
