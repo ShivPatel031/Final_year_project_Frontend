@@ -151,7 +151,7 @@ const Profile = () => {
   }
 
   return (
-    <div className="container px-4 py-8 mt-14 h-screen">
+    <div className="container px-4 py-8 mt-14">
         <ToastContainer
         autoClose={3000}
         hideProgressBar={false}
@@ -291,7 +291,7 @@ const Profile = () => {
                 </div>
               )}
             </div>
-            <div className="p-6">
+            {/* <div className="p-6">
               <h2 className="text-2xl font-semibold text-gray-800 mb-4">Recent Orders</h2>
               {orders.length === 0 ? (
                 <p>No orders yet.</p>
@@ -308,7 +308,7 @@ const Profile = () => {
                   ))}
                 </ul>
               )}
-            </div>
+            </div> */}
           </>
         )}
       </div>
@@ -316,70 +316,5 @@ const Profile = () => {
   );
 };
 
-// Profile.propTypes = {
-//   user: PropTypes.shape({
-//     _id: PropTypes.shape({ $oid: PropTypes.string }),
-//     email: PropTypes.string,
-//     firstName: PropTypes.string,
-//     lastName: PropTypes.string,
-//     dob: PropTypes.shape({ $date: PropTypes.string }),
-//     gender: PropTypes.string,
-//     role: PropTypes.oneOf(['shopkeeper', 'customer']),
-//     contact: PropTypes.string,
-//     image: PropTypes.string,
-//     createdAt: PropTypes.shape({ $date: PropTypes.string }),
-//     updatedAt: PropTypes.shape({ $date: PropTypes.string }),
-//   }),
-//   shop: PropTypes.shape({
-//     _id: PropTypes.shape({ $oid: PropTypes.string }),
-//     name: PropTypes.string,
-//     location: PropTypes.shape({
-//       city: PropTypes.string,
-//       state: PropTypes.string,
-//       country: PropTypes.string,
-//       pincode: PropTypes.string,
-//       latitude: PropTypes.number,
-//       longitude: PropTypes.number,
-//     }),
-//     keyPeople: PropTypes.arrayOf(PropTypes.shape({
-//       name: PropTypes.string,
-//       info: PropTypes.string,
-//       position: PropTypes.string,
-//       keyPeopleImage: PropTypes.string,
-//       _id: PropTypes.shape({ $oid: PropTypes.string }),
-//     })),
-//     tagline: PropTypes.string,
-//     brief_info: PropTypes.string,
-//     shopkeeper_id: PropTypes.shape({ $oid: PropTypes.string }),
-//     establishedYear: PropTypes.shape({ $date: PropTypes.string }),
-//     email: PropTypes.string,
-//     contact: PropTypes.string,
-//     linkedin: PropTypes.string,
-//     twitter: PropTypes.string,
-//     instagram: PropTypes.string,
-//     logo: PropTypes.string,
-//     banner_image: PropTypes.string,
-//     other_images: PropTypes.arrayOf(PropTypes.string),
-//     video_url: PropTypes.string,
-//     theme: PropTypes.string,
-//     ratings: PropTypes.shape({
-//       average: PropTypes.number,
-//       count: PropTypes.number,
-//     }),
-//     shipping_info: PropTypes.shape({
-//       delivery_time: PropTypes.shape({
-//         min: PropTypes.number,
-//         max: PropTypes.number,
-//       }),
-//       zones: PropTypes.string,
-//     }),
-//     category: PropTypes.string,
-//     featured_products: PropTypes.array,
-//     visitors: PropTypes.shape({
-//       visitorId: PropTypes.array,
-//       count: PropTypes.number,
-//     }),
-//   }),
-// };
 
 export default Profile;

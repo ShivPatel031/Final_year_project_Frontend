@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import Cookies from "js-cookie";
 
@@ -15,6 +15,8 @@ import DashboardOrders from "../component/DashbordComponent/DashbordOrders.jsx";
 
 // UI Components
 export default function ShopkeeperDashboard() {
+  const location = useLocation();
+  console.log(location);
   const [hasShop, setHasShop] = useState(false)
   const [shop, setShop] = useState(null)
   const [products, setProducts] = useState([])
@@ -141,19 +143,19 @@ export default function ShopkeeperDashboard() {
         <nav className="flex-1 overflow-y-auto">
           <ul className="p-2 space-y-1">
             <li>
-              <button onClick={()=>navigate("/dashbord")} className="flex items-center px-4 py-2 text-gray-700 bg-gray-100 rounded-md">
+              <button onClick={()=>navigate("/dashbord")} className={`flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 ${location.pathname === "/dashbord" ?" bg-gray-100" : "" } rounded-md`}>
                 <Home className="h-5 w-5 mr-3" />
                 Dashboard
               </button>
             </li>
             <li>
-              <button onClick={()=>navigate("/dashbord/products")} className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md">
+              <button onClick={()=>navigate("/dashbord/products")} className={`flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 ${location.pathname === "/dashbord/products" ?" bg-gray-100" : "" }  rounded-md`}>
                 <Package className="h-5 w-5 mr-3" />
                 Products
               </button>
             </li>
             <li>
-              <button onClick={()=>navigate("/dashbord/orders")} className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md">
+              <button onClick={()=>navigate("/dashbord/orders")} className={`flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 ${location.pathname === "/dashbord/orders" ?" bg-gray-100" : "" } rounded-md`}>
                 <ShoppingCart className="h-5 w-5 mr-3" />
                 Orders
               </button>
@@ -166,7 +168,7 @@ export default function ShopkeeperDashboard() {
       <div className="flex-1">
         <Routes>
           <Route path="" element={<DashboardHome shop={shop} user={user} products={products} handleDeleteProduct={handleDeleteProduct} />}/>
-          <Route path="addShop" element={<div className="fixed w-screen h-full top-0 left-0 bg-white z-20" ><AddProducts shopId={shop._id} fetchProductData={fetchProductData}/></div>}/>
+          <Route path="addShop" element={<div className="h-full top-0 left-0 bg-white z-20" ><AddProducts shopId={shop._id} fetchProductData={fetchProductData}/></div>}/>
           <Route path="products" element={<DashbordProduct shopId={shop._id}/>}/>
           <Route path="orders" element={<DashboardOrders shop_id={shop._id} />} />
         </Routes>

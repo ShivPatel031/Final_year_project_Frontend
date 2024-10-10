@@ -100,7 +100,7 @@ const OrderDetails = ({ order, shopDetails, productDetails }) => {
           </p>
         </div>
         <div className='w-full h-[70px] flex justify-end items-center'>
-          {shopDetails.role && <button 
+          {shopDetails.role && order.status !== 'cancelled' && <button 
             className='w-[200px] h-[50px] bg-purple-300 rounded-2xl'
             onClick={()=>makeOrderComplete()}>Complete</button>}
           {shopDetails.logo && order.status !== 'delivered'&& order.status !== 'cancelled' && <button 
