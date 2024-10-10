@@ -40,10 +40,12 @@ const T2_ProductCard = ({ product }) =>
             </div>
             
           </div>
-          <button className="absolute bottom-3 right-4 bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 transition-colors duration-300"
-                onClick={()=>addToMyCart()}>
+          {user?.role !== 'shopkeeper' && <button className="absolute bottom-3 right-4 bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 transition-colors duration-300"
+                onClick={()=>{
+                  if(user){addToMyCart()}
+                  else {navigate('/login')}}}>
                 Add to Cart
-        </button>
+        </button>}
           
         </motion.div>
     );

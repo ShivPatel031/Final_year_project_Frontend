@@ -12,7 +12,7 @@ function handleLogout() {
   localStorage.removeItem("userData");
 }
 
-function NavOption() {
+function NavOption({setIsOpen}) {
   return (
     <ul className="flex gap-10 justify-start items-center">
       {HomePageNav.map((navData) => (
@@ -20,7 +20,9 @@ function NavOption() {
           className="text-blue-600/90 drop-shadow-lg text-lg font-semibold"
           key={navData.id}
         >
-          <NavLink to={navData.to}>
+          <NavLink 
+            onClick={()=>setIsOpen(false)}
+            to={navData.to}>
             <p>{navData.title}</p>
           </NavLink>
         </li>
@@ -50,13 +52,13 @@ function Header() {
         />
       </div>
       <div className="h-[95%] flex justify-between overflow-visible">
-        <NavOption />
+        <NavOption setIsOpen={setIsOpen}/>
       </div>
       <div className="h-full flex items-center relative overflow-visible">
         {!status && (
           <button
             className="w-[70px] text-lg font-semibold text-fuchsia-600 hover:scale-95 rounded-xl h-[40px]"
-            onClick={() => navigate("/login")}
+            onClick={() =>navigate("/login")}
           >
             Login
           </button>
@@ -65,7 +67,7 @@ function Header() {
         {!status && (
           <button
             className="w-[75px] text-lg font-semibold text-fuchsia-600 hover:scale-95 bg-slate-300/70 rounded-xl h-[40px]"
-            onClick={() => navigate("/signup")}
+            onClick={() =>navigate("/signup")}
           >
             Join us
           </button>
@@ -79,7 +81,9 @@ function Header() {
         )}
 
         {status && isOpen && (
-          <ul className="absolute z-20 w-[150px] bg-slate-950/90 text-white flex flex-col rounded-xl justify-evenly items-start top-[59px] right-[-30px] p-3 gap-2">
+          <ul 
+            className="absolute z-20 w-[150px] bg-slate-950/90 text-white flex flex-col rounded-xl justify-evenly items-start top-[59px] right-[-30px] p-3 gap-2"
+            onMouseLeave={()=>setIsOpen(false)}>
             <li className="hover:bg-white hover:text-slate-950 border-white w-full p-1 cursor-pointer rounded-md" onClick={()=>{navigate(`/profile/${userData.id}`);setIsOpen(false)}}>
               Profile
             </li>

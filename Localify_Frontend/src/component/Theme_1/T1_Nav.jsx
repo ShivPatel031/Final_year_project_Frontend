@@ -43,6 +43,7 @@ const ShopNav = ({ shopLogo, shopId,shopName }) => {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const user = JSON.parse(localStorage.getItem("userData"));
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -100,11 +101,19 @@ const ShopNav = ({ shopLogo, shopId,shopName }) => {
             >
               <FiSearch className="text-xl" />
             </button>
-            <button 
+            {user?.role !== 'shopkeeper' && <button 
               className="w-full text-left py-2 px-4 text-sm text-gray-600 hover:ring-indigo-900 transition-colors duration-200"
-              onClick={()=>navigate(`/shops/${shopId}/cart`)}>
+              onClick={()=>{
+                if(user){
+                  navigate(`/shops/${shopId}/cart`)
+                }
+                else
+                {
+                  navigate('/login');
+                }
+              }}>
                 <FiShoppingCart className="text-xl" />
-            </button>
+            </button>}
           </form>
 
           {/* Mobile Menu Button */}

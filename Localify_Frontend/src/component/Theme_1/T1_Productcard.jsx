@@ -11,6 +11,8 @@ const T1_ProductCard = ({ product }) =>
     const navigate = useNavigate();
     const user = JSON.parse(localStorage.getItem("userData"));
 
+    console.log(user);
+
     const addToMyCart = async ()=>
     {
         let data = {product_id:product._id,shop_id:product.shop_id,customer_id:user.id};
@@ -38,11 +40,13 @@ const T1_ProductCard = ({ product }) =>
             </div>
             
             </div>
-            <button 
+            {user?.role !== 'shopkeeper' && <button 
                 className="m-3 w-[93%] bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-700 transition-colors duration-300"
-                onClick={()=>addToMyCart()}>
+                onClick={()=>{
+                    if(user){addToMyCart()}
+                    else {navigate('/login')}}}>
                 Add to Cart
-            </button>
+            </button>}
         </div>
     );
 } 
