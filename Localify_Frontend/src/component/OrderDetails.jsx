@@ -8,6 +8,7 @@ const OrderDetails = ({ order, shopDetails, productDetails }) => {
   productDetails=order.productDetails;
   order=order.cart;
 
+
   const makeOrderComplete = async ()=>
   {
     let order_id = order._id;
@@ -40,7 +41,7 @@ const OrderDetails = ({ order, shopDetails, productDetails }) => {
             {order.status.toUpperCase()}
           </span>
         </div>
-        <p className="mt-2">Placed on {new Date().toLocaleDateString()}</p>
+        <p className="mt-2">Placed on {order?.createdAt}</p>
       </div>
 
       <div className="p-6">

@@ -1,7 +1,6 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { motion } from 'framer-motion';
-import { FaShoppingCart, FaStar, FaRegStar, FaTruck, FaHeadset, FaEnvelope, FaPhone, FaMapMarkerAlt, FaCalendar } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
 const T2_ProductCard = ({ product }) =>
