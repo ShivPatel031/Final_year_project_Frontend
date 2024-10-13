@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { FaStar, FaStarHalfAlt, FaRegStar, FaShoppingCart } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const ProductDetails = ({ product }) => {
   const [selectedImage, setSelectedImage] = useState(product.primary_image);
   const [quantity, setQuantity] = useState(1);
+  const user = JSON.parse(localStorage.getItem("userData"));
+  const navigate = useNavigate();
 
   const renderStars = (rating) => {
     const stars = [];
@@ -19,9 +23,17 @@ const ProductDetails = ({ product }) => {
     return stars;
   };
 
-  const handleAddToCart = () => {
+  const handleAddToCart = async () => {
     // Implement add to cart functionality here
-    console.log(`Added ${quantity} ${product.name}(s) to cart`);
+    if(!user) navigate('/login');
+    let data = {product_id:product._id,shop_id:product.shop_id,customer_id:user.id};
+    console.log(data);
+    try {
+        const response = await axios.post(`http://${import.meta.env.VITE_BACKEND_ROUTE}/api/carts/add-to-cart`,data)
+        console.log(response.message);
+    } catch (error) {
+        console.log("got erro while adding to cart "+error)
+    }
   };
 
   const isDiscounted = product.price.discount > 0 && new Date(product.price.discount_expiry) > new Date();
@@ -52,14 +64,15 @@ const ProductDetails = ({ product }) => {
             <span className="ml-2">({product.rating})</span>
           </div>
           <p className="text-xl font-semibold mb-2">
-            {isDiscounted ? (
+          <span>${product.price.original}</span>
+            {/* {!isDiscounted ? (
               <>
                 <span className="line-through text-gray-500 mr-2">${product.price.original}</span>
                 <span className="text-red-600">${product.price.discounted_price}</span>
               </>
             ) : (
-              <span>${product.price.original}</span>
-            )}
+              
+            )} */}
           </p>
           {isDiscounted && (
             <p className="text-sm text-green-600 mb-4">
@@ -79,13 +92,13 @@ const ProductDetails = ({ product }) => {
             />
             <span className="ml-2 text-sm text-gray-600">({product.stock} available)</span>
           </div>
-          <button
+          {user?.role !== 'shopkeeper' && <button
             onClick={handleAddToCart}
             className="bg-blue-600 text-white px-6 py-2 rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors"
           >
             <FaShoppingCart className="mr-2" />
             Add to Cart
-          </button>
+          </button>}
           <div className="mt-8">
             <h2 className="text-xl font-semibold mb-2">Product Details</h2>
             <ul className="list-disc list-inside space-y-1 text-gray-700">
