@@ -1,40 +1,3 @@
-// import { FiSearch } from "react-icons/fi";
-// import { NavLink } from "react-router-dom";
-
-// function ShopNav({shopLogo,shopId})
-// {
-//     return (
-//         <div className="w-full h-[70px] bg-slate-300 flex justify-around items-center">
-//             <div>
-//                 <img 
-//                     src={shopLogo} 
-//                     alt="shop logo"
-//                     className="w-[40px] h-[40px]"/>
-//             </div>
-//             <div>
-//                 <ul className="w-[300px] flex justify-between">
-//                     <li><NavLink to={`/shops/${shopId}/`}>Home</NavLink></li>
-//                     <li><NavLink to={`/shops/${shopId}/product`}>product</NavLink></li>
-//                     <li><NavLink to={`/shops/${shopId}/contact`}>contact</NavLink></li>
-//                     <li><NavLink to={`/shops/${shopId}/about`}>about</NavLink></li>
-//                 </ul>
-//             </div>
-//             <div className="w-[300px] flex justify-between">
-//                 <div className="flex w-[200px] justify-between items-center">
-//                     <input 
-//                     type="text"
-//                     placeholder="Search Product"
-//                     className="w-[160px] h-[30px] rounded-md px-4"
-//                     />
-//                     <FiSearch className="text-[25px]"/>
-//                 </div>
-//             </div>
-//         </div>
-//     )
-// }
-
-// export default ShopNav;
-
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { FiSearch, FiMenu, FiX, FiShoppingCart} from 'react-icons/fi';
@@ -56,6 +19,8 @@ const ShopNav = ({ shopLogo, shopId,shopName }) => {
     { path: `/shops/${shopId}/product`, label: 'Products' },
     { path: `/shops/${shopId}/contact`, label: 'Contact' },
     { path: `/shops/${shopId}/about`, label: 'About' },
+    { path: `/shops`, label: 'Other Shops' },
+    { path: `/dashbord`, label: 'Dashbord' },
   ];
 
   return (
@@ -69,21 +34,26 @@ const ShopNav = ({ shopLogo, shopId,shopName }) => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <NavLink
+            {navItems.map((item) => {
+
+              if(user?.role === 'shopkeeper' && item.label === 'Other Shops') return;
+              if(user?.role === 'customer' && item.label === 'Dashbord') return;
+              return <NavLink
                 key={item.path}
                 to={item.path}
                 className={({ isActive }) =>
-                  `text-lg ${
+                  `text-lg ${ item.label !== 'Other Shops' ? 
                     isActive
                       ? 'text-indigo-600 font-semibold'
-                      : 'text-gray-600 hover:text-indigo-600'
-                  } transition-colors duration-200`
+                      : 'text-gray-600'
+                      :''
+                  } transition-colors duration-200  hover:text-indigo-600`
                 }
               >
                 {item.label}
               </NavLink>
-            ))}
+            }
+            )}
           </div>
 
           {/* Search Bar */}

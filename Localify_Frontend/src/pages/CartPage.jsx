@@ -105,6 +105,8 @@ const CartPage = ({ shop_id }) => {
   const fetchCartData = useCallback(async () => {
     if (!user || !shop_id) return;
 
+    console.log(user.id);
+
     try {
       const response = await axios.post(`http://${import.meta.env.VITE_BACKEND_ROUTE}/api/carts/get-cart`, {
         customer_id: user.id,
@@ -170,6 +172,7 @@ const CartPage = ({ shop_id }) => {
   }, [cart]);
 
   const giveOrder= async ()=>{
+    if(products.length === 0 ){ return};
     const productarr = products.reduce((data,d)=>{return [...data,{product_id:d._id,quantity:d.quantity}]},[]);
     const data = {customer_id:user.id,shop_id:shop_id,products:productarr,total:subTotal,delivery_location:{city:city,address:address,pincode:pin,address:address,state:state},cart_id:cart._id};
     console.log(data);

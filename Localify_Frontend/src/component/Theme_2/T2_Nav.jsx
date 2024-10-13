@@ -20,6 +20,8 @@ const T2_Nav = ({ shopLogo, shopId, shopName }) => {
     { path: `/shops/${shopId}/product`, label: 'Products' },
     { path: `/shops/${shopId}/contact`, label: 'Contact' },
     { path: `/shops/${shopId}/about`, label: 'About' },
+    { path: `/shops`, label: 'Other Shops' },
+    { path: `/dashbord`, label: 'Dashbord' },
   ];
 
   return (
@@ -33,21 +35,25 @@ const T2_Nav = ({ shopLogo, shopId, shopName }) => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-6">
-            {navItems.map((item) => (
-              <NavLink
+            {navItems.map((item) => {
+              if(user?.role === 'shopkeeper' && item.label === 'Other Shops') return;
+              if(user?.role === 'customer' && item.label === 'Dashbord') return;
+              return <NavLink
                 key={item.path}
                 to={item.path}
                 className={({ isActive }) =>
-                  `text-sm font-medium ${
+                  `text-sm font-medium ${ item.label !== 'Other Shops' ? 
                     isActive
                       ? 'text-purple-600 border-b-2 border-purple-600'
-                      : 'text-gray-600 hover:text-purple-600'
-                  } transition-colors duration-200`
+                      : 'text-gray-600' 
+                      : ''
+                  } transition-colors duration-200 hover:text-purple-600`
                 }
               >
                 {item.label}
               </NavLink>
-            ))}
+            }
+            )}
           </div>
 
           {/* Search Bar and Cart Icon */}

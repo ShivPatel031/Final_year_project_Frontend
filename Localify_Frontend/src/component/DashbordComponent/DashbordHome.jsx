@@ -26,7 +26,7 @@ function DashboardHome({user,shop,products,handleDeleteProduct,setIsAddingProduc
           </div>
         </header>
 
-        <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 min-h-screen">
           <div className="px-4 py-6 sm:px-0">
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {/* Shop Details Card */}
@@ -72,12 +72,12 @@ function DashboardHome({user,shop,products,handleDeleteProduct,setIsAddingProduc
 
             {/* Products Table */}
             <div className="mt-8">
-              <div className="mb-4 flex justify-between items-center">
+              {/* <div className="mb-4 flex justify-between items-center">
                 <h2 className="text-xl font-semibold">Products</h2>
                 <Button onClick={()=>navigate("/dashbord/addShop")}>
                   <Plus className="mr-2 h-4 w-4" /> Add Product
                 </Button>
-              </div>
+              </div> */}
               <Card>
                 <CardContent>
                   <Table>

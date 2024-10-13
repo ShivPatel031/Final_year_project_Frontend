@@ -69,9 +69,8 @@ function DashboardOrders({shop_id})
             <h1 className="text-2xl font-semibold text-gray-900">Orders</h1>
           </div>
         </header>
-        <div className="w-full h-min-screen">
-            <h2 className="text-[25px]">Your orders</h2>
-            {order.map((data)=><OrderDetails order={data}/>)}
+        <div className="w-full h-min-screen flex justify-center items-center">
+            {order.length === 0 ? <h2 className="text-[25px] mt-[50px]">You don't have any Orders</h2> : order.map((data)=><OrderDetails order={data}/>)}
         </div>
         
     </>

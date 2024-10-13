@@ -47,21 +47,21 @@ const SignupForm = () => {
   };
 
   return (
-    <div className="min-h-screen blueGradient flex items-center flex-col justify-center bg-gray-100 w-full">
+    <div className="min-h-screen GradientNeon2 flex items-center flex-col justify-center bg-gray-100 w-full">
       <p
-        className="top-0 fancyFont overflow-hidden p-4 text-white text-[40px] rounded-md m-5 flex justify-center items-center cursor-pointer drop-shadow-lg hover:scale-95"
+        className="fancyFont overflow-hidden  text-white text-4xl mb-2 p-5 rounded-md  flex justify-center items-center cursor-pointer drop-shadow-lg hover:scale-95"
         onClick={() => navigate("/")}
       >
         Localify
       </p>
 
       <ToastContainer />
-      <div className="bg-white mt-15 p-10 rounded-lg shadow-lg w-[700px]">
+      <div className="bg-white p-6  rounded-lg shadow-lg w-[700px]">
         <h2 className="text-2xl font-bold text-center mb-6">
-          Register in Localify
+          Register
         </h2>
         <form onSubmit={handleSubmit}>
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-2 items-center justify-center gap-2">
             <div>
               <label
                 className="block text-gray-700 text-sm font-bold mb-2"

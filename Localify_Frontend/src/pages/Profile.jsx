@@ -151,7 +151,7 @@ const Profile = () => {
   }
 
   return (
-    <div className="container px-4 py-8 mt-14">
+    <div className="container px-4 py-8 mt-14 min-h-screen">
         <ToastContainer
         autoClose={3000}
         hideProgressBar={false}
@@ -263,7 +263,7 @@ const Profile = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {shop.keyPeople.map((person) => (
                       <div key={person._id.$oid} className="bg-white p-4 rounded-lg shadow">
-                        <img src={person.keyPeopleImage} alt={person.name} className="w-full h-40 object-cover rounded-lg mb-2" />
+                        <img src={person.keyPeopleImage} alt={person.name} className="w-full h-56 rounded-lg mb-2 object-cover object-top" />
                         <h4 className="font-semibold">{person.name}</h4>
                         <p className="text-sm text-gray-600">{person.position}</p>
                         <p className="text-sm mt-1">{person.info}</p>
@@ -282,6 +282,8 @@ const Profile = () => {
                   </div>
                   {shop.video_url && (
                     <div className="mt-4">
+                      <iframe className='w-full' height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+</iframe>
                       <a href={shop.video_url} target="_blank" rel="noopener noreferrer" className="flex items-center text-blue-600">
                         <Video className="w-5 h-5 mr-2" />
                         Watch shop video

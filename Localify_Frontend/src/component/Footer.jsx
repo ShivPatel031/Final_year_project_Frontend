@@ -2,7 +2,7 @@ import { SiFacebook, SiInstagram, SiSnapchat } from "react-icons/si";
 
 function Footer() {
   return (
-    <footer className="w-full bg-gray-900 text-white py-8 px-6 lg:px-32">
+    <footer className="w-full bg-black border-t  text-white py-8 px-6 lg:px-32">
       <div className="flex justify-between items-center">
         {/* Logo and Socials */}
         <div className="flex flex-col items-start space-y-4">

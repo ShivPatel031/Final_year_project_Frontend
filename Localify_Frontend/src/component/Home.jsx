@@ -16,7 +16,7 @@ function StepCard({ title, step, description, index }) {
           {step}
         </p>
         <div className="w-[1px] h-[150px] blueGradient mb-[15px]" />
-        <div className="flex flex-col text-slate-700 gap-4 w-[50vw] h-[35vh] items-center bg-blue-300/50 p-7 rounded-xl hover:shadow-lg shadow-black">
+        <div className="flex flex-col text-white gap-4 w-[50vw] h-[35vh] items-center border-fuchsia-800/90 border-2 bg-black/80 p-7 rounded-xl hover:shadow-lg shadow-black">
           <p className="text-3xl">Step {step}</p>
           <h3 className="text-5xl">{title}</h3>
           <p className="text-center">{description}</p>
@@ -28,18 +28,18 @@ function StepCard({ title, step, description, index }) {
 
 function Home() {
   return (
-    <div className="w-full relative flex flex-col items-center">
+    <div className="w-full GradientNeon relative flex flex-col items-center">
       {/* Hero Section */}
-      <div className="w-screen h-screen blueGradient flex justify-center items-center flex-col">
-        <motion.div className="flex flex-col justify-between items-center h-[350px]" initial="initial" animate="animation">
+      <div className="w-full h-screen bgImage flex justify-center items-center flex-col">
+        <motion.div className="flex bg-black opacity-80 p-2 rounded-2xl flex-col justify-between items-center h-[350px]" initial="initial" animate="animation">
           <motion.h1 className="text-[55px] w-[700px] text-center font-bold mainimageanimaion text-white">
             Empowering Local Businesses with Effortless Online Stores
           </motion.h1>
           <motion.p className="text-slate-600 mainimageanimaion font-semibold text-white/80 text-xl">Where you can </motion.p>
           <div className="w-[70%] flex justify-evenly">
-            <button className="bg-white text-purple-500 rounded-xl w-[100px] h-[40px] text-center mainimageanimaion font-semibold ">Showcase</button>
-            <button className="bg-white text-purple-500 rounded-xl w-[100px] h-[40px] text-center mainimageanimaion font-semibold ">Sell</button>
-            <button className="bg-white text-purple-500 rounded-xl w-[100px] h-[40px] text-center mainimageanimaion font-semibold ">Purchase</button>
+            <button className="bg-white text-purple-500 rounded-xl w-[100px] h-[40px] text-center mainimageanimaion font-semibold hover:scale-95 ease-in-out ">Showcase</button>
+            <button className="bg-white text-purple-500 rounded-xl w-[100px] h-[40px] text-center mainimageanimaion font-semibold  hover:scale-95 ease-in-out">Sell</button>
+            <button className="bg-white text-purple-500 rounded-xl w-[100px] h-[40px] text-center mainimageanimaion font-semibold  hover:scale-95 ease-in-out">Purchase</button>
           </div>
         </motion.div>
       </div>
@@ -49,9 +49,9 @@ function Home() {
         <h3 className="text-[40px] text-center"></h3>
       </div>
 
-      <div className="py-[40px] home-second">
+      <div className="py-[40px] home-second  ">
 
-                <div className="w-full h-[350px] px-[150px] flex  justify-betweenitems-center " >
+                <div className="w-full h-[350px] px-[150px] flex  justify-between items-center " >
 
                     <motion.div 
                         className="w-[47%] h-[85%] home-second-div-imag1 rounded-xl div1-image"
@@ -59,7 +59,7 @@ function Home() {
                         whileInView="animate"
                         ></motion.div>
                     <motion.div 
-                        className="w-[50%] h-[85%] flex flex-col items-start justify-evenly pl-40 div1-text"
+                        className="w-[50%] h-[85%] border-2 border-fuchsia-950 rounded-3xl flex flex-col items-start justify-evenly pl-40 hover:shadow-lg hover:scale-105 ease-out hover:shadow-fuchsia-950/50   div1-text"
                         initial="initial"
                         whileInView="animate"
                         >
@@ -70,14 +70,13 @@ function Home() {
 
                 </div>
 
-                <div className="w-full h-[350px] px-[150px] flex justify-between items-center home-second">
+                <div className="w-full h-[350px] px-[150px] flex justify-between items-center home-second ">
 
                     <motion.div 
-                        className="w-[50%] h-[85%] flex flex-col items-start justify-evenly pr-40 div2-text"
+                        className="w-[50%] h-[85%] flex flex-col items-start justify-evenly pr-40 div2-text w-[50%] h-[85%] border-2 border-fuchsia-950 rounded-3xl flex flex-col items-start justify-evenly pl-40 hover:shadow-lg hover:scale-105 ease-out hover:shadow-fuchsia-950/50   div1-text"
                         initial="initial"
                         whileInView="animate"
                         >
-                        <h1 className="text-[40px]">Build with the world’s most intuitive platform</h1>
                         <p>Another subheading—maybe it’s related to the image on the left, or the button below </p>
                         <button className="bg-black rounded-md text-white w-[100px] h-[45px]">Start Now</button>
                     </motion.div>

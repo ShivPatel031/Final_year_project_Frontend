@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 
 // export default Dashbord
 import React, { useState, useEffect } from 'react'
-import { Plus, Edit, Trash2, Store, Package, Bell, Home, ShoppingCart, Users, Search, ChevronDown, X } from 'lucide-react'
+import { Plus, Edit, Trash2, Store, Package, Bell, Home, ShoppingCart, Users, Search, ChevronDown, X ,CirclePlus} from 'lucide-react'
 import AddProducts from "../component/AddProducts.jsx";
 import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle } from "../component/DashbordComponent/DashBordSmallComponent.jsx";
 import DashboardHome from "../component/DashbordComponent/DashbordHome.jsx";
@@ -160,15 +160,27 @@ export default function ShopkeeperDashboard() {
                 Orders
               </button>
             </li>
+            <li>
+              <button onClick={()=>navigate("/dashbord/addProducts")} className={`flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 ${location.pathname === "/dashbord/addProducts" ?" bg-gray-100" : "" } rounded-md`}>
+              <CirclePlus className="h-5 w-5 mr-3" />
+                Add Product
+              </button>
+              <li>
+              <button onClick={()=>navigate(`/shops/${shop._id}/home`)} className={`flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md`}>
+                <Store className="h-5 w-5 mr-3" />
+                Go to shop
+              </button>
+            </li>
+            </li>
           </ul>
         </nav>
       </div>
 
       {/* Main content */}
-      <div className="flex-1">
+      <div className="flex-1 min-h-screen">
         <Routes>
           <Route path="" element={<DashboardHome shop={shop} user={user} products={products} handleDeleteProduct={handleDeleteProduct} />}/>
-          <Route path="addShop" element={<div className="h-full top-0 left-0 bg-white z-20" ><AddProducts shopId={shop._id} fetchProductData={fetchProductData}/></div>}/>
+          <Route path="addProducts" element={<div className="h-full top-0 left-0 bg-white z-20" ><AddProducts shopId={shop._id} fetchProductData={fetchProductData}/></div>}/>
           <Route path="products" element={<DashbordProduct shopId={shop._id}/>}/>
           <Route path="orders" element={<DashboardOrders shop_id={shop._id} />} />
         </Routes>

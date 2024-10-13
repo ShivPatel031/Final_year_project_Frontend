@@ -2,11 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
+
+
+.bgAddShop{
+    background-image: url("../public/bg2.jpg");
+    background-repeat: repeat-y;
+    background-size: contain;
+}
+.GradientNeon{
+    background: linear-gradient(180deg, black 10%, black 10%, #1a0135 70%, black 100%);
+
+    color: white;
     
-   
+       
+}
+.GradientNeon2{
+    background: #5C258D;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #4389A2, #5C258D);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #4389A2, #5C258D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+    
+       
 }
 
+.addShop input {
+    background-color: whitesmoke;
+    opacity: 90%;
+
+    color: black;
+}
+.addShop textarea {
+    background-color: whitesmoke;
+    opacity: 90%;
+
+    color: black;
+}
+
+.bgImage{
+   background-image: url("../public/3160.jpg");
+   background-size:cover ;
+  
+}
 .pinkGradient{
     background-image:linear-gradient(to right , #FF6B81,#AB47BC);
 }

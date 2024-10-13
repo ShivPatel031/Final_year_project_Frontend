@@ -77,7 +77,7 @@ const LoginForm = ({setAddShop}) => {
 
 
   return (
-    <div className=" flex-col  min-h-screen flex items-center justify-start blueGradient">
+    <div className=" flex-col  min-h-screen flex items-center justify-start GradientNeon2">
         
       <p
         className=" overflow-hidden p-4 drop-shadow-lg hover:scale-95  fancyFont top-3 text-white text-[40px] rounded-md m-7 flex justify-center items-center cursor-pointer"
@@ -122,7 +122,7 @@ const LoginForm = ({setAddShop}) => {
               name="email"
               value={formData.email}
               onChange={changeHandler}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               placeholder="Enter your email"
             />
           </div>
@@ -143,7 +143,7 @@ const LoginForm = ({setAddShop}) => {
                 required
                 value={formData.password}
                 onChange={changeHandler}
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className=" shadow-md  appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 placeholder="Enter your password"
               />
 
